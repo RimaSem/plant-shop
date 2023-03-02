@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 100%;
+  min-height: 100%;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+
+  #root {
+    min-width: 100%;
+    min-height: 100%;
+
+    .site-wrapper {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+}
