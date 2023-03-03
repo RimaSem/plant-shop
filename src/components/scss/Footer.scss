@@ -1,0 +1,40 @@
+footer {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #898989;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1em;
+
+  ul {
+    margin: 0 0 1em 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  footer {
+    ul {
+      flex-direction: row;
+      gap: 1em;
+
+      li {
+        border-left: 1px solid #898989;
+        padding-left: 1em;
+        cursor: pointer;
+      }
+
+      .footer-faq {
+        border: none;
+        padding-left: 0;
+      }
+    }
+  }
+}

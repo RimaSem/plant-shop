@@ -1,5 +1,6 @@
 import "./scss/Home.scss";
 import Hero from "../components/Hero";
+import Footer from "../components/Footer";
 import Img1 from "../img/quality_svg.svg";
 import Img2 from "../img/convenience_svg.svg";
 import Img3 from "../img/care_svg.svg";
@@ -36,6 +37,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
