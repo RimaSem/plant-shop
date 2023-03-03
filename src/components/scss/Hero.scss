@@ -1,9 +1,9 @@
 .hero-container {
   width: 100%;
-  min-height: 550px;
-  background: url(../../img/flat-lay-monstera-other-leaves.jpg) no-repeat fixed;
+  min-height: 600px;
+  background: url(../../img/flat-lay-monstera-other-leaves.jpg) no-repeat;
   background-size: cover;
-  //   background-position: -47em -5em;
+  background-position: 10%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -35,5 +35,35 @@
     font-weight: 700;
     padding: 18px 48px;
     width: fit-content;
+    margin-bottom: 1em;
+
+    &:hover {
+      background-color: #437d53;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .hero-container {
+    .hero-title {
+      font-size: 2.1rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+
+    button {
+      font-size: 0.9rem;
+      padding: 12px 30px;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .hero-container {
+    button {
+      margin-bottom: 4em;
+    }
   }
 }
