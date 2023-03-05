@@ -1,8 +1,14 @@
+import "./scss/Shop.scss";
+import Item from "../components/Item";
+
 function Shop() {
   return (
-    <>
-      <h1>This is the shop section.</h1>
-    </>
+    <div className="shop-container">
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+    </div>
   );
 }
 

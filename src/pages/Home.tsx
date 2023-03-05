@@ -23,7 +23,7 @@ function Home() {
             </p>
           </div>
           <div className="promise">
-            <img src={Img2}></img>
+            <img src={Img2} />
             <p>
               <b>Delivery to your door</b> We’ll bring your plants to your door,
               anywhere in LT. If you’re not 100% happy, tell us within 30 days
