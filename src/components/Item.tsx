@@ -7,7 +7,7 @@ type plantDataProps = {
   plantData: {
     id: number;
     name: string;
-    price: string;
+    price: number;
     img: string;
     description: string;
     isFavorite: boolean;
