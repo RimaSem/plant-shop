@@ -1,6 +1,7 @@
 import "./scss/Home.scss";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
+import ItemCarousel from "../components/ItemCarousel";
 import Img1 from "../img/quality_svg.svg";
 import Img2 from "../img/convenience_svg.svg";
 import Img3 from "../img/care_svg.svg";
@@ -11,6 +12,8 @@ function Home() {
   return (
     <div className="home-container">
       <Hero />
+      <h3>Best-Selling Houseplants</h3>
+      <ItemCarousel />
       <div className="why-us-container">
         <h3>Why GetPlants?</h3>
         <div className="promise-wrapper">
@@ -63,7 +66,6 @@ function Home() {
           <button type="button">Shop the collection</button>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

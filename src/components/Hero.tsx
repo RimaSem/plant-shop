@@ -8,8 +8,8 @@ function Hero() {
         Space
       </h1>
       <p>
-        Get healthy house plants, succulents and air plants shipped directly
-        from our plant shop to your door.
+        Get healthy houseplants, succulents and air plants shipped directly from
+        our plant shop to your door.
       </p>
       <button type="button">FIND YOUR PLANT</button>
     </div>
