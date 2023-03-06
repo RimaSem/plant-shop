@@ -27,19 +27,11 @@
   }
 }
 
-@media screen and (min-width: 700px) {
-  .why-us-container {
-    .promise-wrapper {
-      display: flex;
-      max-width: 1200px;
-    }
-  }
-}
-
 .unkillable-plants-intro,
 .petsafe-plants-intro {
+  margin: 0 auto;
   color: #313232;
-  margin-bottom: 3em;
+
   img {
     height: 14em;
     width: 100%;
@@ -75,31 +67,39 @@
   }
 }
 
+@media screen and (min-width: 700px) {
+  .why-us-container {
+    .promise-wrapper {
+      display: flex;
+      max-width: 1200px;
+    }
+  }
+}
+
 @media screen and (min-width: 780px) {
   .unkillable-plants-intro {
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     max-width: 1200px;
+    margin: 0 auto;
 
     img {
       height: 31em;
       flex: 1;
+      width: 50%;
       order: 2;
     }
 
     .intro-wrapper {
       text-align: end;
-      flex: 1;
+      width: 50%;
       padding: 5em 2em 2em 2em;
     }
   }
 
   .petsafe-plants-intro {
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     max-width: 1200px;
+    margin: 0 auto 3em;
 
     img {
       height: 31em;
@@ -108,7 +108,7 @@
     }
 
     .intro-wrapper {
-      flex: 1;
+      width: 50%;
       text-align: left;
       padding: 5em 2em 2em 2em;
     }

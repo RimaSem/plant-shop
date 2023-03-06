@@ -3,9 +3,22 @@ import { useState, useRef } from "react";
 import Icon from "@mdi/react";
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 
-function Item() {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(18);
+type plantDataProps = {
+  plantData: {
+    id: number;
+    name: string;
+    price: string;
+    img: string;
+    description: string;
+    isFavorite: boolean;
+    forBeginners: boolean;
+    isPetSafe: boolean;
+  };
+};
+
+function Item({ plantData }: plantDataProps) {
+  // const [name, setName] = useState("");
+  // const [price, setPrice] = useState(18);
   const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -42,10 +55,10 @@ function Item() {
         )}
       </div>
 
-      <img src="../../public/marble_queen.jpg" />
+      <img src={plantData.img} />
       <div className="item-info">
-        <div className="item-name">Marble Queen Pothos</div>
-        <div className="item-price">€18.00</div>
+        <div className="item-name">{plantData.name}</div>
+        <div className="item-price">€{plantData.price}.00</div>
         <div className="add-to-cart-wrapper">
           <div className="quantity-wrapper">
             <button
