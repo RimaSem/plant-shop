@@ -10,7 +10,8 @@
     gap: 1em;
     margin-bottom: 2em;
 
-    button {
+    a {
+      text-decoration: none;
       font-family: inherit;
       font-size: 1rem;
       font-weight: 300;
@@ -23,6 +24,12 @@
         background-color: #437d53;
         color: white;
       }
+    }
+
+    .selected {
+      border: 1px solid #437d53;
+      background-color: #437d53;
+      color: white;
     }
   }
 

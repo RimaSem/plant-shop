@@ -1,27 +1,46 @@
 import "./scss/Shop.scss";
-import { useState, useContext } from "react";
+import { useContext } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { AppContext } from "../appContext";
 import Item from "../components/Item";
 
 function Shop() {
   const context = useContext(AppContext);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const forBeginnersFilter = searchParams.get("forBeginners");
+  const petSafeFilter = searchParams.get("isPetSafe");
 
-  const displayItems = context?.allItems.map((item) => (
+  function filterItems() {
+    if (forBeginnersFilter) {
+      return context?.allItems.filter((item) => item.forBeginners === true);
+    } else if (petSafeFilter) {
+      return context?.allItems.filter((item) => item.isPetSafe === true);
+    }
+    return context?.allItems;
+  }
+
+  const displayItems = filterItems()?.map((item) => (
     <Item key={item.id} plantData={item} />
   ));
 
   return (
     <div className="shop-container">
       <div className="filter-btns">
-        <button type="button" className="filter-all-btn">
+        <Link
+          to="."
+          className={forBeginnersFilter || petSafeFilter ? "" : "selected"}
+        >
           All
-        </button>
-        <button type="button" className="filter-for-beginners-btn">
+        </Link>
+        <Link
+          to="?forBeginners=true"
+          className={forBeginnersFilter ? "selected" : ""}
+        >
           For Beginners
-        </button>
-        <button type="button" className="filter-pet-friendly-btn">
+        </Link>
+        <Link to="?isPetSafe=true" className={petSafeFilter ? "selected" : ""}>
           Pet-Friendly
-        </button>
+        </Link>
       </div>
       <div className="item-list">{displayItems}</div>
     </div>
