@@ -1,4 +1,5 @@
 import "./scss/Hero.scss";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -11,7 +12,9 @@ function Hero() {
         Get healthy houseplants, succulents and air plants shipped directly from
         our plant shop to your door.
       </p>
-      <button type="button">FIND YOUR PLANT</button>
+      <Link to="./shop">
+        <button type="button">FIND YOUR PLANT</button>
+      </Link>
     </div>
   );
 }

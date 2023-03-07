@@ -1,6 +1,6 @@
 import "./scss/Home.scss";
+import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
-import Footer from "../components/Footer";
 import ItemCarousel from "../components/ItemCarousel";
 import Img1 from "../img/quality_svg.svg";
 import Img2 from "../img/convenience_svg.svg";
@@ -51,7 +51,9 @@ function Home() {
             together a collection of plants who are low maintenance enough to
             forgive you for the odd missed watering.
           </p>
-          <button type="button">Shop the collection</button>
+          <Link to="./shop/?forBeginners=true">
+            <button type="button">Shop the collection</button>
+          </Link>
         </div>
       </div>
       <div className="petsafe-plants-intro">
@@ -63,7 +65,9 @@ function Home() {
             your four-legged friends happy, healthy and out of harm’s way with
             cat and dog-safe houseplants.
           </p>
-          <button type="button">Shop the collection</button>
+          <Link to="./shop/?isPetSafe=true">
+            <button type="button">Shop the collection</button>
+          </Link>
         </div>
       </div>
     </div>

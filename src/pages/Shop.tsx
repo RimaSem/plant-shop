@@ -1,5 +1,5 @@
 import "./scss/Shop.scss";
-import { useContext } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { AppContext } from "../appContext";
 import Item from "../components/Item";
@@ -9,6 +9,10 @@ function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const forBeginnersFilter = searchParams.get("forBeginners");
   const petSafeFilter = searchParams.get("isPetSafe");
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   function filterItems() {
     if (forBeginnersFilter) {
