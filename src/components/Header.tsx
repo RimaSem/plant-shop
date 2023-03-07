@@ -28,7 +28,12 @@ function Header() {
         </NavLink>
       </nav>
       <div className="header-icons">
-        <Icon className="header-icon" path={mdiHeart} />
+        <NavLink
+          to="/plant-shop/favorite"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          <Icon className="header-icon" path={mdiHeart} />
+        </NavLink>
         <Icon className="header-icon" path={mdiCartOutline} />
       </div>
     </header>

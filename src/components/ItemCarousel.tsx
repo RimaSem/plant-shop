@@ -21,7 +21,7 @@ function ItemCarousel() {
       slidesToSlide: 3,
     },
     tablet: {
-      breakpoint: { max: 1000, min: 464 },
+      breakpoint: { max: 1000, min: 500 },
       items: 3,
       slidesToSlide: 2,
     },
