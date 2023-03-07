@@ -9,8 +9,8 @@ function ItemCarousel() {
   const context = useContext(AppContext);
 
   const displayItems = context?.allItems.slice(0, 10).map((item) => (
-    <div className="card">
-      <Item key={item.id} plantData={item} />
+    <div key={item.id} className="card">
+      <Item plantData={item} />
     </div>
   ));
 
