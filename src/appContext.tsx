@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import data from "./data";
 
 type appContextProviderProps = {
@@ -31,18 +31,37 @@ type AppContextType = {
       }[]
     >
   >;
+  toggleFavorite: (id: number) => void;
 };
 
 const AppContext = React.createContext<AppContextType | null>(null);
 
 function AppContextProvider({ children }: appContextProviderProps) {
-  const [allItems, setAllItems] = useState(data);
+  const [allItems, setAllItems] = useState(
+    localStorage.getItem("items") ? JSON.parse(localStorage["items"]) : data
+  );
+
+  function toggleFavorite(id: number) {
+    const updatedArr = allItems.map((item: any) => {
+      if (item.id === id) {
+        return { ...item, isFavorite: !item.isFavorite };
+      }
+      return item;
+    });
+
+    setAllItems(updatedArr);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(allItems));
+  }, [allItems]);
 
   return (
     <AppContext.Provider
       value={{
         allItems,
         setAllItems,
+        toggleFavorite,
       }}
     >
       {children}

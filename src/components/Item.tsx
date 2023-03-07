@@ -1,7 +1,8 @@
 import "./scss/Item.scss";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import Icon from "@mdi/react";
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
+import { AppContext } from "../appContext";
 
 type plantDataProps = {
   plantData: {
@@ -17,12 +18,10 @@ type plantDataProps = {
 };
 
 function Item({ plantData }: plantDataProps) {
-  // const [name, setName] = useState("");
-  // const [price, setPrice] = useState(18);
-  const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
+  const [itemID, setItemID] = useState(plantData.id);
   const minusRef = useRef<HTMLButtonElement>(null);
+  const context = useContext(AppContext);
 
   function minus() {
     if (quantity > 1) {
@@ -42,13 +41,13 @@ function Item({ plantData }: plantDataProps) {
 
   function favorite(e: React.SyntheticEvent) {
     e.stopPropagation();
-    setIsFavorite((prev) => !prev);
+    context?.toggleFavorite(itemID);
   }
 
   return (
     <div className="item-card">
       <div className="heart-icon-wrapper" onClick={favorite}>
-        {isFavorite ? (
+        {plantData.isFavorite ? (
           <Icon className="heart-icon" path={mdiHeart} size={1} />
         ) : (
           <Icon className="heart-icon" path={mdiHeartOutline} size={1} />
