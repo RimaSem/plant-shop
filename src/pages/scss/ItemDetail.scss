@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   max-width: 1200px;
-
   margin: 0 auto;
+
   .back-btn {
+    width: fit-content;
     border: none;
     margin: 2em 0 1em 1.5em;
     font-family: inherit;
@@ -125,6 +126,7 @@
     .back-btn {
       margin-left: 4.5em;
     }
+
     .detail-container {
       flex-direction: row;
       gap: 2em;

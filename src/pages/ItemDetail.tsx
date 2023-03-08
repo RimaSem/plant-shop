@@ -60,13 +60,7 @@ function ItemDetail() {
             {item.isPetSafe && <div className="pet-friendly">Pet-friendly</div>}
           </div>
           <div className="price">€{item.price}.00</div>
-          <div className="description">
-            Marble Queen, or Devil's Ivy, is a tropical, climbing plant with
-            origins in the Solomon Islands. The Marble Queen is a variegated
-            cultivar of Epipremnum aureum. Its waxy green leaves have streaks
-            and patches of white, creating a bright and striking foliage plant.
-            Marble Queens have oval leaves with heart shaped bases.
-          </div>
+          <div className="description">{item.description}</div>
           <div className="add-to-cart-wrapper">
             <div className="quantity-wrapper">
               <button
