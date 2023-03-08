@@ -34,7 +34,10 @@ function Header() {
         >
           <Icon className="header-icon" path={mdiHeart} />
         </NavLink>
-        <Icon className="header-icon" path={mdiCartOutline} />
+        <div className="cart-icon-wrapper">
+          <div className="quantity-label">8</div>
+          <Icon className="header-icon cart" path={mdiCartOutline} />
+        </div>
       </div>
     </header>
   );
