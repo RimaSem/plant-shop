@@ -53,6 +53,12 @@ function ItemDetail() {
         <img src={item.img} />
         <div className="info-wrapper">
           <h2>{item.name}</h2>
+          <div className="plant-type-labels">
+            {item.forBeginners && (
+              <div className="beginner-friendly">For beginners</div>
+            )}
+            {item.isPetSafe && <div className="pet-friendly">Pet-friendly</div>}
+          </div>
           <div className="price">€{item.price}.00</div>
           <div className="description">
             Marble Queen, or Devil's Ivy, is a tropical, climbing plant with
