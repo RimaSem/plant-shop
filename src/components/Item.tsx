@@ -1,5 +1,6 @@
 import "./scss/Item.scss";
 import { useState, useRef, useContext } from "react";
+import { Link } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import { AppContext } from "../appContext";
@@ -54,9 +55,13 @@ function Item({ plantData }: plantDataProps) {
         )}
       </div>
 
-      <img src={plantData.img} />
+      <Link to={`/plant-shop/shop/${plantData.id}`}>
+        <img src={plantData.img} />
+      </Link>
       <div className="item-info">
-        <div className="item-name">{plantData.name}</div>
+        <Link to={`/plant-shop/shop/${plantData.id}`}>
+          <div className="item-name">{plantData.name}</div>
+        </Link>
         <div className="item-price">€{plantData.price}.00</div>
         <div className="add-to-cart-wrapper">
           <div className="quantity-wrapper">

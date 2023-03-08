@@ -1,10 +1,14 @@
 import "./scss/Favorite.scss";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../appContext";
 import Item from "../components/Item";
 
 function Favorite() {
   const context = useContext(AppContext);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, []);
 
   const displayItems = context?.allItems
     .filter((item) => item.isFavorite)

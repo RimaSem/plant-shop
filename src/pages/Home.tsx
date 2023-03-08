@@ -1,4 +1,5 @@
 import "./scss/Home.scss";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import ItemCarousel from "../components/ItemCarousel";
@@ -9,6 +10,10 @@ import Img4 from "../img/beginner-plants.jpg";
 import Img5 from "../img/pet-friendly-plants.jpg";
 
 function Home() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, []);
+
   return (
     <div className="home-container">
       <Hero />
