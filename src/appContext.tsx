@@ -32,6 +32,8 @@ type AppContextType = {
     >
   >;
   toggleFavorite: (id: number) => void;
+  cart: any;
+  setCart: React.Dispatch<any>;
 };
 
 const AppContext = React.createContext<AppContextType | null>(null);
@@ -40,6 +42,8 @@ function AppContextProvider({ children }: appContextProviderProps) {
   const [allItems, setAllItems] = useState(
     localStorage.getItem("items") ? JSON.parse(localStorage["items"]) : data
   );
+
+  const [cart, setCart] = useState(allItems[0]);
 
   function toggleFavorite(id: number) {
     const updatedArr = allItems.map((item: any) => {
@@ -62,6 +66,8 @@ function AppContextProvider({ children }: appContextProviderProps) {
         allItems,
         setAllItems,
         toggleFavorite,
+        cart,
+        setCart,
       }}
     >
       {children}
