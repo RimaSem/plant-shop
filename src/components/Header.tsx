@@ -5,6 +5,13 @@ import Icon from "@mdi/react";
 import { mdiCartOutline, mdiHeart } from "@mdi/js";
 
 function Header() {
+  function openCart() {
+    const cart = document.querySelector(".cart-container") as HTMLElement;
+    if (cart) {
+      cart.classList.add("active");
+    }
+  }
+
   return (
     <header>
       <Link to="/plant-shop/">
@@ -34,8 +41,10 @@ function Header() {
         >
           <Icon className="header-icon" path={mdiHeart} />
         </NavLink>
-        <div className="cart-icon-wrapper">
-          <div className="quantity-label">8</div>
+        <div className="cart-icon-wrapper" onClick={openCart}>
+          <div className="quantity-label" onClick={openCart}>
+            8
+          </div>
           <Icon className="header-icon cart" path={mdiCartOutline} />
         </div>
       </div>

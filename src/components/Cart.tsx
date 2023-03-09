@@ -8,6 +8,13 @@ function Cart() {
   const context = useContext(AppContext);
   const [quantity, setQuantity] = useState(1);
   const minusRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLDivElement>(null);
+
+  function closeCart() {
+    if (closeRef.current) {
+      closeRef.current.classList.remove("active");
+    }
+  }
 
   function minus() {
     if (quantity > 1) {
@@ -26,8 +33,10 @@ function Cart() {
   }
 
   return (
-    <div className="cart-container">
-      <Icon className="close-cart-btn" path={mdiWindowClose} />
+    <div ref={closeRef} className="cart-container">
+      <div className="close-cart-btn" onClick={closeCart}>
+        <Icon path={mdiWindowClose} />
+      </div>
       <div className="cart-content">
         <div className="item">
           <Icon className="delete-item-btn" path={mdiTrashCanOutline} />

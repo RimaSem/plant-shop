@@ -1,13 +1,14 @@
 .cart-container {
   z-index: 1001;
   position: fixed;
-  right: 0;
+  //   right: 0;
+  right: -600px;
   height: 100vh;
   width: 100%;
   background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
-  //   overflow-y: scroll;
+  transition: right 0.5s;
 
   .close-cart-btn {
     margin: 1em 1em 1em auto;
@@ -113,6 +114,10 @@
       }
     }
   }
+}
+
+.cart-container.active {
+  right: 0;
 }
 
 @media screen and (min-width: 520px) {
