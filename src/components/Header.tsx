@@ -7,8 +7,12 @@ import { mdiCartOutline, mdiHeart } from "@mdi/js";
 function Header() {
   function openCart() {
     const cart = document.querySelector(".cart-container") as HTMLElement;
-    if (cart) {
+    const overlay = document.querySelector(".overlay") as HTMLElement;
+    const body = document.querySelector("body") as HTMLElement;
+    if (cart && overlay && body) {
       cart.classList.add("active");
+      overlay.style.visibility = "visible";
+      body.style.overflowY = "hidden";
     }
   }
 

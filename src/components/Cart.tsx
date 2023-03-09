@@ -11,8 +11,12 @@ function Cart() {
   const closeRef = useRef<HTMLDivElement>(null);
 
   function closeCart() {
+    const overlay = document.querySelector(".overlay") as HTMLElement;
+    const body = document.querySelector("body") as HTMLElement;
     if (closeRef.current) {
       closeRef.current.classList.remove("active");
+      overlay.style.visibility = "hidden";
+      body.style.overflowY = "visible";
     }
   }
 
