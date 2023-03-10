@@ -1,5 +1,5 @@
 import "./scss/Cart.scss";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { AppContext } from "../appContext";
 import Icon from "@mdi/react";
 import { mdiWindowClose, mdiTrashCanOutline } from "@mdi/js";
@@ -18,6 +18,12 @@ function Cart() {
       overlay.style.visibility = "hidden";
       body.style.overflowY = "visible";
     }
+  }
+
+  function removeItem(id: number) {
+    let copyCart: { id: number; quantity: number }[] = [];
+    context?.cart?.forEach((item) => copyCart.push(item));
+    context?.setCart(copyCart.filter((item) => item.id !== id));
   }
 
   function minus() {
@@ -42,73 +48,56 @@ function Cart() {
         <Icon path={mdiWindowClose} />
       </div>
       <div className="cart-content">
-        <div className="item">
-          <Icon className="delete-item-btn" path={mdiTrashCanOutline} />
-          <img src={context?.cart.img} alt="" />
-          <div className="item-details">
-            <h4 className="item-name">{context?.cart.name}</h4>
-            <h4>€{context?.cart.price}.00</h4>
-            <div className="quantity-wrapper">
-              <button
-                ref={minusRef}
-                onClick={minus}
-                className="quantity-button minus"
-              >
-                −
-              </button>
-              <div className="quantity-value">{quantity}</div>
-              <button onClick={plus} className="quantity-button">
-                +
-              </button>
+        {!context?.cart?.length ? (
+          <h1>Your cart is empty</h1>
+        ) : (
+          context?.cart?.map((item) => (
+            <div key={item.id} className="item">
+              <div onClick={() => removeItem(item.id)}>
+                <Icon className="delete-item-btn" path={mdiTrashCanOutline} />
+              </div>
+              <img
+                src={
+                  context?.allItems?.filter((obj) => obj.id === item.id)[0].img
+                }
+              />
+              <div className="item-details">
+                <h4 className="item-name">
+                  {
+                    context?.allItems?.filter((obj) => obj.id === item.id)[0]
+                      .name
+                  }
+                </h4>
+                <h4>
+                  €
+                  {
+                    context?.allItems?.filter((obj) => obj.id === item.id)[0]
+                      .price
+                  }
+                  .00
+                </h4>
+                <div className="quantity-wrapper">
+                  <button
+                    ref={minusRef}
+                    onClick={minus}
+                    className="quantity-button minus"
+                  >
+                    −
+                  </button>
+                  <div className="quantity-value">{quantity}</div>
+                  <button onClick={plus} className="quantity-button">
+                    +
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="item">
-          <Icon className="delete-item-btn" path={mdiTrashCanOutline} />
-          <img src={context?.cart.img} alt="" />
-          <div className="item-details">
-            <h4 className="item-name">{context?.cart.name}</h4>
-            <h4>€{context?.cart.price}.00</h4>
-            <div className="quantity-wrapper">
-              <button
-                ref={minusRef}
-                onClick={minus}
-                className="quantity-button minus"
-              >
-                −
-              </button>
-              <div className="quantity-value">{quantity}</div>
-              <button onClick={plus} className="quantity-button">
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <Icon className="delete-item-btn" path={mdiTrashCanOutline} />
-          <img src={context?.cart.img} alt="" />
-          <div className="item-details">
-            <h4 className="item-name">{context?.cart.name}</h4>
-            <h4>€{context?.cart.price}.00</h4>
-            <div className="quantity-wrapper">
-              <button
-                ref={minusRef}
-                onClick={minus}
-                className="quantity-button minus"
-              >
-                −
-              </button>
-              <div className="quantity-value">{quantity}</div>
-              <button onClick={plus} className="quantity-button">
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="checkout-wrapper">
+          ))
+        )}
+
+        {/* <div className="checkout-wrapper">
           <h3>Total: €58.00</h3>
           <button type="button">Checkout</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

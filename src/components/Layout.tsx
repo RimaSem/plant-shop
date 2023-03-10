@@ -10,9 +10,11 @@ export default function Layout() {
 
   function hideOverlay() {
     const cart = document.querySelector(".cart-container") as HTMLElement;
-    if (overlayRef.current && cart) {
+    const body = document.querySelector("body") as HTMLElement;
+    if (overlayRef.current && cart && body) {
       overlayRef.current.style.visibility = "hidden";
       cart.classList.remove("active");
+      body.style.overflowY = "visible";
     }
   }
 

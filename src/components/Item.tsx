@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import { AppContext } from "../appContext";
+import AddToCartButton from "./AddToCartButton";
 
 type plantDataProps = {
   plantData: {
@@ -19,26 +20,26 @@ type plantDataProps = {
 };
 
 function Item({ plantData }: plantDataProps) {
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const [itemID, setItemID] = useState(plantData.id);
-  const minusRef = useRef<HTMLButtonElement>(null);
+  // const minusRef = useRef<HTMLButtonElement>(null);
   const context = useContext(AppContext);
 
-  function minus() {
-    if (quantity > 1) {
-      if (quantity === 2 && minusRef.current) {
-        minusRef.current.style.color = "rgb(207, 207, 207)";
-      }
-      setQuantity((prev) => prev - 1);
-    }
-  }
+  // function minus() {
+  //   if (quantity > 1) {
+  //     if (quantity === 2 && minusRef.current) {
+  //       minusRef.current.style.color = "rgb(207, 207, 207)";
+  //     }
+  //     setQuantity((prev) => prev - 1);
+  //   }
+  // }
 
-  function plus() {
-    setQuantity((prev) => prev + 1);
-    if (minusRef.current) {
-      minusRef.current.style.color = "rgb(49, 50, 50)";
-    }
-  }
+  // function plus() {
+  //   setQuantity((prev) => prev + 1);
+  //   if (minusRef.current) {
+  //     minusRef.current.style.color = "rgb(49, 50, 50)";
+  //   }
+  // }
 
   function favorite(e: React.SyntheticEvent) {
     e.stopPropagation();
@@ -63,7 +64,8 @@ function Item({ plantData }: plantDataProps) {
           <div className="item-name">{plantData.name}</div>
         </Link>
         <div className="item-price">€{plantData.price}.00</div>
-        <div className="add-to-cart-wrapper">
+        <AddToCartButton id={itemID} />
+        {/* <div className="add-to-cart-wrapper">
           <div className="quantity-wrapper">
             <button
               ref={minusRef}
@@ -80,7 +82,7 @@ function Item({ plantData }: plantDataProps) {
           <button className="add-to-cart-btn" type="button">
             Add to Cart
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

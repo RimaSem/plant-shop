@@ -2,6 +2,7 @@ import "./scss/ItemDetail.scss";
 import { useState, useEffect, useContext, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../appContext";
+import AddToCartButton from "../components/AddToCartButton";
 
 function ItemDetail() {
   const [item, setItem] = useState({
@@ -15,8 +16,8 @@ function ItemDetail() {
     isPetSafe: false,
   });
   const context = useContext(AppContext);
-  const [quantity, setQuantity] = useState(1);
-  const minusRef = useRef<HTMLButtonElement>(null);
+  // const [quantity, setQuantity] = useState(1);
+  // const minusRef = useRef<HTMLButtonElement>(null);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -28,21 +29,21 @@ function ItemDetail() {
     });
   }, []);
 
-  function minus() {
-    if (quantity > 1) {
-      if (quantity === 2 && minusRef.current) {
-        minusRef.current.style.color = "rgb(207, 207, 207)";
-      }
-      setQuantity((prev) => prev - 1);
-    }
-  }
+  // function minus() {
+  //   if (quantity > 1) {
+  //     if (quantity === 2 && minusRef.current) {
+  //       minusRef.current.style.color = "rgb(207, 207, 207)";
+  //     }
+  //     setQuantity((prev) => prev - 1);
+  //   }
+  // }
 
-  function plus() {
-    setQuantity((prev) => prev + 1);
-    if (minusRef.current) {
-      minusRef.current.style.color = "rgb(49, 50, 50)";
-    }
-  }
+  // function plus() {
+  //   setQuantity((prev) => prev + 1);
+  //   if (minusRef.current) {
+  //     minusRef.current.style.color = "rgb(49, 50, 50)";
+  //   }
+  // }
 
   return (
     <div className="container">
@@ -61,7 +62,8 @@ function ItemDetail() {
           </div>
           <div className="price">€{item.price}.00</div>
           <div className="description">{item.description}</div>
-          <div className="add-to-cart-wrapper">
+          <AddToCartButton id={id} />
+          {/* <div className="add-to-cart-wrapper">
             <div className="quantity-wrapper">
               <button
                 ref={minusRef}
@@ -78,7 +80,7 @@ function ItemDetail() {
             <button className="add-to-cart-btn" type="button">
               Add to Cart
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
