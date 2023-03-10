@@ -1,7 +1,7 @@
 import "./scss/Cart.scss";
 import { useRef, useContext } from "react";
 import { AppContext } from "../appContext";
-import Icon from "@mdi/react";
+import { Icon } from "@mdi/react";
 import { mdiWindowClose, mdiTrashCanOutline } from "@mdi/js";
 
 function Cart() {

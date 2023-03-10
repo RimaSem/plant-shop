@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AppContext } from "../appContext";
 import logo from "../img/plant-shop-logo.png";
 import { Link, NavLink } from "react-router-dom";
-import Icon from "@mdi/react";
+import { Icon } from "@mdi/react";
 import { mdiCartOutline, mdiHeart } from "@mdi/js";
 
 function Header() {

@@ -1,7 +1,7 @@
 import "./scss/Item.scss";
-import { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Icon from "@mdi/react";
+import { Icon } from "@mdi/react";
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import { AppContext } from "../appContext";
 import AddToCartButton from "./AddToCartButton";
