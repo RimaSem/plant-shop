@@ -51,33 +51,15 @@ function AppContextProvider({ children }: appContextProviderProps) {
   const [allItems, setAllItems] = useState(
     localStorage.getItem("items") ? JSON.parse(localStorage["items"]) : data
   );
-
-  // const [cart, setCart] = useState(allItems[0]);
-
   const [cart, setCart] = useState<{ id: number; quantity: number }[] | null>(
     null
   );
 
   function addToCart(id: number, quantity: number) {
-    // let isAdded = cart?.some((item) => item.id === id);
     let copyCart: { id: number; quantity: number }[] = [];
     cart?.forEach((item) => copyCart.push(item));
     copyCart.push({ id, quantity });
     setCart(copyCart);
-
-    // if (!isAdded) {
-    //   setCart([...copyCart, { id, quantity }]);
-    // } else {
-    //   setCart(
-    //     copyCart.map((item) => {
-    //       if (item.id === id) {
-    //         return { ...item, quantity: item.quantity + quantity };
-    //       } else {
-    //         return item;
-    //       }
-    //     })
-    //   );
-    // }
   }
 
   function toggleFavorite(id: number) {

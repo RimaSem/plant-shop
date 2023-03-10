@@ -1,4 +1,4 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef, SyntheticEvent } from "react";
 import { AppContext } from "../appContext";
 
 type AddToCartButtonProps = {
@@ -8,6 +8,7 @@ type AddToCartButtonProps = {
 function AddToCartButton({ id }: AddToCartButtonProps) {
   const [quantity, setQuantity] = useState(1);
   const minusRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const context = useContext(AppContext);
 
   function minus() {
@@ -26,6 +27,20 @@ function AddToCartButton({ id }: AddToCartButtonProps) {
     }
   }
 
+  //   function handleButton() {
+  //     if (context?.cart?.some((obj) => obj.id === id)) {
+  //       if (buttonRef.current) {
+  //         buttonRef.current.innerText = "Item Added";
+  //         buttonRef.current.disabled = true
+  //       }
+  //     } else {
+  //         if (buttonRef.current) {
+  //             buttonRef.current.innerText = "Add to Cart";
+  //             buttonRef.current.disabled = false
+  //           }
+  //     }
+  //   }
+
   return (
     <div className="add-to-cart-wrapper">
       <div className="quantity-wrapper">
@@ -33,20 +48,29 @@ function AddToCartButton({ id }: AddToCartButtonProps) {
           ref={minusRef}
           onClick={minus}
           className="quantity-button minus"
+          disabled={context?.cart?.some((obj) => obj.id === id)}
         >
           −
         </button>
         <div className="quantity-value">{quantity}</div>
-        <button onClick={plus} className="quantity-button">
+        <button
+          onClick={plus}
+          className="quantity-button"
+          disabled={context?.cart?.some((obj) => obj.id === id)}
+        >
           +
         </button>
       </div>
       <button
+        ref={buttonRef}
         className="add-to-cart-btn"
         type="button"
         onClick={() => context?.addToCart(Number(id), Number(quantity))}
+        disabled={context?.cart?.some((obj) => obj.id === id)}
       >
-        Add to Cart
+        {context?.cart?.some((obj) => obj.id === id)
+          ? "Item Added"
+          : "Add to Cart"}
       </button>
     </div>
   );
