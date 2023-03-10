@@ -32,17 +32,18 @@ type AppContextType = {
     >
   >;
   toggleFavorite: (id: number) => void;
-  cart: { id: number; quantity: number }[] | null;
+  cart: { id: number; quantity: number; price: number }[] | null;
   setCart: React.Dispatch<
     React.SetStateAction<
       | {
           id: number;
           quantity: number;
+          price: number;
         }[]
       | null
     >
   >;
-  addToCart: (id: number, quantity: number) => void;
+  addToCart: (id: number, quantity: number, price: number) => void;
 };
 
 const AppContext = React.createContext<AppContextType | null>(null);
@@ -51,14 +52,14 @@ function AppContextProvider({ children }: appContextProviderProps) {
   const [allItems, setAllItems] = useState(
     localStorage.getItem("items") ? JSON.parse(localStorage["items"]) : data
   );
-  const [cart, setCart] = useState<{ id: number; quantity: number }[] | null>(
-    null
-  );
+  const [cart, setCart] = useState<
+    { id: number; quantity: number; price: number }[] | null
+  >(null);
 
-  function addToCart(id: number, quantity: number) {
-    let copyCart: { id: number; quantity: number }[] = [];
+  function addToCart(id: number, quantity: number, price: number) {
+    let copyCart: { id: number; quantity: number; price: number }[] = [];
     cart?.forEach((item) => copyCart.push(item));
-    copyCart.push({ id, quantity });
+    copyCart.push({ id, quantity, price });
     setCart(copyCart);
   }
 

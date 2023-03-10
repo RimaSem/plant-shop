@@ -67,54 +67,28 @@
       }
 
       .add-to-cart-wrapper {
-        display: flex;
         max-width: 400px;
         margin-top: 2em;
 
         .quantity-wrapper {
           flex: 1;
           min-height: 3em;
-          display: flex;
-          align-items: center;
-          justify-content: space-evenly;
-          border: 1px solid #313232;
-          background-color: #fefefe;
           font-size: 1rem;
 
           .quantity-button {
-            background-color: #fefefe;
             font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-          }
-
-          .quantity-button.minus {
-            color: rgb(207, 207, 207);
           }
 
           .quantity-value {
             font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
           }
         }
 
         .add-to-cart-btn {
           padding: 0.2em 0;
           flex: 3;
-          font-family: inherit;
-          background-color: #313232;
-          border: none;
-          color: #fff;
           font-size: 1.1rem;
           font-weight: 500;
-          transition: all 0.2s;
-
-          &:hover {
-            cursor: pointer;
-            background-color: #437652;
-          }
         }
       }
     }

@@ -1,4 +1,5 @@
-import { useState, useContext, useRef, SyntheticEvent } from "react";
+import "./scss/AddToCartButton.scss";
+import { useState, useContext, useRef } from "react";
 import { AppContext } from "../appContext";
 
 type AddToCartButtonProps = {
@@ -6,40 +7,34 @@ type AddToCartButtonProps = {
 };
 
 function AddToCartButton({ id }: AddToCartButtonProps) {
+  const context = useContext(AppContext);
   const [quantity, setQuantity] = useState(1);
   const minusRef = useRef<HTMLButtonElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const context = useContext(AppContext);
 
   function minus() {
     if (quantity > 1) {
-      if (quantity === 2 && minusRef.current) {
-        minusRef.current.style.color = "rgb(207, 207, 207)";
-      }
       setQuantity((prev) => prev - 1);
+      let copyCart: { id: number; quantity: number; price: number }[] = [];
+      context?.cart?.forEach((item) => copyCart.push(item));
+      context?.setCart(
+        copyCart.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+      );
     }
   }
 
   function plus() {
     setQuantity((prev) => prev + 1);
-    if (minusRef.current) {
-      minusRef.current.style.color = "rgb(49, 50, 50)";
-    }
+    let copyCart: { id: number; quantity: number; price: number }[] = [];
+    context?.cart?.forEach((item) => copyCart.push(item));
+    context?.setCart(
+      copyCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
   }
-
-  //   function handleButton() {
-  //     if (context?.cart?.some((obj) => obj.id === id)) {
-  //       if (buttonRef.current) {
-  //         buttonRef.current.innerText = "Item Added";
-  //         buttonRef.current.disabled = true
-  //       }
-  //     } else {
-  //         if (buttonRef.current) {
-  //             buttonRef.current.innerText = "Add to Cart";
-  //             buttonRef.current.disabled = false
-  //           }
-  //     }
-  //   }
 
   return (
     <div className="add-to-cart-wrapper">
@@ -65,7 +60,13 @@ function AddToCartButton({ id }: AddToCartButtonProps) {
         ref={buttonRef}
         className="add-to-cart-btn"
         type="button"
-        onClick={() => context?.addToCart(Number(id), Number(quantity))}
+        onClick={() =>
+          context?.addToCart(
+            Number(id),
+            Number(quantity),
+            Number(context?.allItems?.filter((item) => item.id === id)[0].price)
+          )
+        }
         disabled={context?.cart?.some((obj) => obj.id === id)}
       >
         {context?.cart?.some((obj) => obj.id === id)

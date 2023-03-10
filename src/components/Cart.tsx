@@ -1,12 +1,11 @@
 import "./scss/Cart.scss";
-import { useState, useRef, useContext, useEffect } from "react";
+import { useRef, useContext } from "react";
 import { AppContext } from "../appContext";
 import Icon from "@mdi/react";
 import { mdiWindowClose, mdiTrashCanOutline } from "@mdi/js";
 
 function Cart() {
   const context = useContext(AppContext);
-  const [quantity, setQuantity] = useState(1);
   const minusRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLDivElement>(null);
 
@@ -21,25 +20,31 @@ function Cart() {
   }
 
   function removeItem(id: number) {
-    let copyCart: { id: number; quantity: number }[] = [];
+    let copyCart: { id: number; quantity: number; price: number }[] = [];
     context?.cart?.forEach((item) => copyCart.push(item));
     context?.setCart(copyCart.filter((item) => item.id !== id));
   }
 
-  function minus() {
+  function minus(id: number, quantity: number) {
     if (quantity > 1) {
-      if (quantity === 2 && minusRef.current) {
-        minusRef.current.style.color = "rgb(207, 207, 207)";
-      }
-      setQuantity((prev) => prev - 1);
+      let copyCart: { id: number; quantity: number; price: number }[] = [];
+      context?.cart?.forEach((item) => copyCart.push(item));
+      context?.setCart(
+        copyCart.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+      );
     }
   }
 
-  function plus() {
-    setQuantity((prev) => prev + 1);
-    if (minusRef.current) {
-      minusRef.current.style.color = "rgb(49, 50, 50)";
-    }
+  function plus(id: number) {
+    let copyCart: { id: number; quantity: number; price: number }[] = [];
+    context?.cart?.forEach((item) => copyCart.push(item));
+    context?.setCart(
+      copyCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
   }
 
   return (
@@ -70,22 +75,23 @@ function Cart() {
                 </h4>
                 <h4>
                   €
-                  {
-                    context?.allItems?.filter((obj) => obj.id === item.id)[0]
-                      .price
-                  }
+                  {context?.allItems?.filter((obj) => obj.id === item.id)[0]
+                    .price * item.quantity}
                   .00
                 </h4>
                 <div className="quantity-wrapper">
                   <button
                     ref={minusRef}
-                    onClick={minus}
+                    onClick={() => minus(item.id, item.quantity)}
                     className="quantity-button minus"
                   >
                     −
                   </button>
-                  <div className="quantity-value">{quantity}</div>
-                  <button onClick={plus} className="quantity-button">
+                  <div className="quantity-value">{item.quantity}</div>
+                  <button
+                    onClick={() => plus(item.id)}
+                    className="quantity-button"
+                  >
                     +
                   </button>
                 </div>
@@ -94,10 +100,18 @@ function Cart() {
           ))
         )}
 
-        {/* <div className="checkout-wrapper">
-          <h3>Total: €58.00</h3>
-          <button type="button">Checkout</button>
-        </div> */}
+        {Number(context?.cart?.length) > 0 && (
+          <div className="checkout-wrapper">
+            <h3>
+              Total: €
+              {context?.cart?.reduce((prev, current) => {
+                return prev + current.quantity * current.price;
+              }, 0)}
+              .00
+            </h3>
+            <button type="button">Checkout</button>
+          </div>
+        )}
       </div>
     </div>
   );
