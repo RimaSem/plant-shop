@@ -20,26 +20,8 @@ type plantDataProps = {
 };
 
 function Item({ plantData }: plantDataProps) {
-  // const [quantity, setQuantity] = useState(1);
   const [itemID, setItemID] = useState(plantData.id);
-  // const minusRef = useRef<HTMLButtonElement>(null);
   const context = useContext(AppContext);
-
-  // function minus() {
-  //   if (quantity > 1) {
-  //     if (quantity === 2 && minusRef.current) {
-  //       minusRef.current.style.color = "rgb(207, 207, 207)";
-  //     }
-  //     setQuantity((prev) => prev - 1);
-  //   }
-  // }
-
-  // function plus() {
-  //   setQuantity((prev) => prev + 1);
-  //   if (minusRef.current) {
-  //     minusRef.current.style.color = "rgb(49, 50, 50)";
-  //   }
-  // }
 
   function favorite(e: React.SyntheticEvent) {
     e.stopPropagation();
@@ -65,24 +47,6 @@ function Item({ plantData }: plantDataProps) {
         </Link>
         <div className="item-price">€{plantData.price}.00</div>
         <AddToCartButton id={itemID} />
-        {/* <div className="add-to-cart-wrapper">
-          <div className="quantity-wrapper">
-            <button
-              ref={minusRef}
-              onClick={minus}
-              className="quantity-button minus"
-            >
-              −
-            </button>
-            <div className="quantity-value">{quantity}</div>
-            <button onClick={plus} className="quantity-button">
-              +
-            </button>
-          </div>
-          <button className="add-to-cart-btn" type="button">
-            Add to Cart
-          </button>
-        </div> */}
       </div>
     </div>
   );

@@ -1,10 +1,14 @@
 import "./scss/Header.scss";
+import { useContext } from "react";
+import { AppContext } from "../appContext";
 import logo from "../img/plant-shop-logo.png";
 import { Link, NavLink } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiCartOutline, mdiHeart } from "@mdi/js";
 
 function Header() {
+  const context = useContext(AppContext);
+
   function openCart() {
     const cart = document.querySelector(".cart-container") as HTMLElement;
     const overlay = document.querySelector(".overlay") as HTMLElement;
@@ -46,9 +50,11 @@ function Header() {
           <Icon className="header-icon" path={mdiHeart} />
         </NavLink>
         <div className="cart-icon-wrapper" onClick={openCart}>
-          <div className="quantity-label" onClick={openCart}>
-            8
-          </div>
+          {Number(context?.cart?.length) > 0 && (
+            <div className="quantity-label" onClick={openCart}>
+              {context?.cart?.length}
+            </div>
+          )}
           <Icon className="header-icon cart" path={mdiCartOutline} />
         </div>
       </div>
