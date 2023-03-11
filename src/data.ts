@@ -34,7 +34,7 @@ export default [
 
   {
     id: 2,
-    name: "Cylindrical Snake Plant",
+    name: "Cylindrical Plant",
     price: 15,
     img: CylSnakePlant,
     description:
