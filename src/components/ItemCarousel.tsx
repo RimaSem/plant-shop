@@ -26,14 +26,21 @@ function ItemCarousel() {
       slidesToSlide: 2,
     },
     mobile: {
-      breakpoint: { max: 350, min: 0 },
-      items: 1,
+      breakpoint: { max: 500, min: 0 },
+      items: 2,
+      centerMode: true,
     },
   };
   return (
-    <Carousel className="item-carousel" responsive={responsive} infinite={true}>
-      {displayItems}
-    </Carousel>
+    <div className="carousel-wrapper">
+      <Carousel
+        className="item-carousel"
+        responsive={responsive}
+        infinite={true}
+      >
+        {displayItems}
+      </Carousel>
+    </div>
   );
 }
 
