@@ -32,15 +32,9 @@ function ItemCarousel() {
     },
   };
   return (
-    <div className="carousel-wrapper">
-      <Carousel
-        className="item-carousel"
-        responsive={responsive}
-        infinite={true}
-      >
-        {displayItems}
-      </Carousel>
-    </div>
+    <Carousel className="item-carousel" responsive={responsive} infinite={true}>
+      {displayItems}
+    </Carousel>
   );
 }
 
