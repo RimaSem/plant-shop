@@ -1,6 +1,8 @@
+@import "../../variables";
+
 .shop-container {
   margin: 2em auto 4em auto;
-  max-width: 1200px;
+  max-width: $max-width;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,15 +23,15 @@
       cursor: pointer;
 
       &:hover {
-        border-color: #437d53;
-        background-color: #437d53;
+        border-color: $secondary-color;
+        background-color: $secondary-color;
         color: white;
       }
     }
 
     .selected {
-      border: 1px solid #437d53;
-      background-color: #437d53;
+      border: 1px solid $secondary-color;
+      background-color: $secondary-color;
       color: white;
     }
   }

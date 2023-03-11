@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .item-card {
   width: clamp(160px, 20%, 40%);
   border: 0.0625rem solid #dedede;
@@ -36,7 +38,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #fefefe;
-    color: #313232;
+    color: $dark-color;
     padding-top: 0.5em;
 
     a {

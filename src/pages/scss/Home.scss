@@ -1,6 +1,8 @@
+@import "../../variables";
+
 .home-container {
   h3 {
-    color: #5da271;
+    color: $primary-color;
     font-size: 2.3rem;
     font-weight: 500;
     margin-top: 2em;
@@ -14,10 +16,10 @@
     padding: 2em 0px;
     font-size: 1.8rem;
     text-align: center;
-    color: #313232;
+    color: $dark-color;
 
     h3 {
-      color: #5da271;
+      color: $primary-color;
       font-size: 2.3rem;
       font-weight: 500;
       margin-top: 0;
@@ -59,10 +61,10 @@
 
       button {
         color: #e3e3e3;
-        background-color: #5da271;
+        background-color: $primary-color;
         border: none;
         cursor: pointer;
-        font-family: "Roboto Condensed", sans-serif;
+        font-family: inherit;
         font-size: 1rem;
         font-weight: 700;
         padding: 0.6em 2em;
@@ -70,7 +72,7 @@
         margin-bottom: 1em;
 
         &:hover {
-          background-color: #437d53;
+          background-color: $secondary-color;
         }
       }
     }
@@ -82,7 +84,7 @@
     .why-us-container {
       .promise-wrapper {
         display: flex;
-        max-width: 1200px;
+        max-width: $max-width;
       }
     }
   }
@@ -92,7 +94,7 @@
   .home-container {
     .unkillable-plants-intro {
       display: flex;
-      max-width: 1200px;
+      max-width: $max-width;
       margin: 0 auto;
 
       img {
@@ -111,7 +113,7 @@
 
     .petsafe-plants-intro {
       display: flex;
-      max-width: 1200px;
+      max-width: $max-width;
       margin: 0 auto 3em;
 
       img {

@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .hero-container {
   width: 100%;
   min-height: 600px;
@@ -16,7 +18,7 @@
     margin: 0;
 
     .hero-title-highlighted {
-      color: #5da271;
+      color: $primary-color;
       text-shadow: 1px 1px 2px #000;
     }
   }
@@ -28,10 +30,10 @@
 
   button {
     color: #e3e3e3;
-    background-color: #5da271;
+    background-color: $primary-color;
     border: none;
     cursor: pointer;
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: inherit;
     font-size: 1rem;
     font-weight: 700;
     padding: 18px 48px;
@@ -39,7 +41,7 @@
     margin-bottom: 1em;
 
     &:hover {
-      background-color: #437d53;
+      background-color: $secondary-color;
     }
   }
 }

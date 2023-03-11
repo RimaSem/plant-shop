@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .cart-container {
   z-index: 1003;
   position: fixed;
@@ -71,7 +73,7 @@
           align-items: center;
           width: 5em;
           justify-content: space-evenly;
-          border: 1px solid #313232;
+          border: 1px solid $dark-color;
           background-color: #fefefe;
           font-size: 0.9rem;
           margin-top: auto;
@@ -104,11 +106,11 @@
         font-size: 1.1rem;
         border: none;
         color: #e3e3e3;
-        background-color: #5da271;
+        background-color: $primary-color;
         cursor: pointer;
 
         &:hover {
-          background-color: #437d53;
+          background-color: $secondary-color;
         }
       }
     }

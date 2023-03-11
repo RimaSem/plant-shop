@@ -1,3 +1,5 @@
+@import "../../variables";
+
 header {
   z-index: 1001;
   display: flex;
@@ -106,16 +108,6 @@ header {
     }
   }
 }
-
-// header.overlay {
-//   z-index: 1001;
-//   position: fixed;
-//   width: 100vw;
-//   height: 100vh;
-//   background-color: rgba(0, 0, 0, 0.5);
-//   transition: 0.5s ease-in-out;
-//   overflow: hidden;
-// }
 
 @media screen and (max-width: 500px) {
   header {
