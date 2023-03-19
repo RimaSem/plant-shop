@@ -22,9 +22,9 @@ function Header() {
 
   return (
     <header>
-      <Link to="/plant-shop/">
+      <Link to="/plant-shop/" aria-label="Logo">
         <div className="logo-container">
-          <img src={logo} />
+          <img src={logo} alt="Header logo" />
           <div className="logo-title">GetPlants</div>
         </div>
       </Link>
@@ -46,6 +46,7 @@ function Header() {
         <NavLink
           to="/plant-shop/favorite"
           className={({ isActive }) => (isActive ? "active-link" : "")}
+          aria-label="Favorite plants"
         >
           <Icon className="header-icon" path={mdiHeart} />
         </NavLink>

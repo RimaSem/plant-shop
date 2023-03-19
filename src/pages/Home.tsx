@@ -17,13 +17,13 @@ function Home() {
   return (
     <div className="home-container">
       <Hero />
-      <h3>Best-Selling Houseplants</h3>
+      <h2>Best-Selling Houseplants</h2>
       <ItemCarousel />
       <div className="why-us-container">
-        <h3>Why GetPlants?</h3>
+        <h2>Why GetPlants?</h2>
         <div className="promise-wrapper">
           <div className="promise">
-            <img src={Img1}></img>
+            <img src={Img1} alt="Unbeatable quality image"></img>
             <p>
               <b>Unbeatable quality</b> We source directly from top-rated
               growers, so we can sell the finest quality plants at the very best
@@ -31,7 +31,7 @@ function Home() {
             </p>
           </div>
           <div className="promise">
-            <img src={Img2} />
+            <img src={Img2} alt="Delivery image" />
             <p>
               <b>Delivery to your door</b> We’ll bring your plants to your door,
               anywhere in LT. If you’re not 100% happy, tell us within 30 days
@@ -39,7 +39,7 @@ function Home() {
             </p>
           </div>
           <div className="promise">
-            <img src={Img3}></img>
+            <img src={Img3} alt="Help image"></img>
             <p>
               <b>All the help you need</b> We’ll send you a free plant-parenting
               course and our plant doctors are always on call.
@@ -56,7 +56,10 @@ function Home() {
             together a collection of plants who are low maintenance enough to
             forgive you for the odd missed watering.
           </p>
-          <Link to="./shop/?forBeginners=true">
+          <Link
+            to="./shop/?forBeginners=true"
+            aria-label="Shop for beginner plants"
+          >
             <button type="button">Shop the collection</button>
           </Link>
         </div>
@@ -70,7 +73,10 @@ function Home() {
             your four-legged friends happy, healthy and out of harm’s way with
             cat and dog-safe houseplants.
           </p>
-          <Link to="./shop/?isPetSafe=true">
+          <Link
+            to="./shop/?isPetSafe=true"
+            aria-label="Shop for pet-safe plants"
+          >
             <button type="button">Shop the collection</button>
           </Link>
         </div>

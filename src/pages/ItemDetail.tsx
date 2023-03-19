@@ -33,7 +33,7 @@ function ItemDetail() {
         &larr; Go Back
       </button>
       <div className="detail-container">
-        <img src={item.img} />
+        <img src={item.img} alt="Plant image" />
         <div className="info-wrapper">
           <h2>{item.name}</h2>
           <div className="plant-type-labels">

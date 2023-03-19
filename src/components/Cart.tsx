@@ -65,6 +65,7 @@ function Cart() {
                 src={
                   context?.allItems?.filter((obj) => obj.id === item.id)[0].img
                 }
+                alt="Plant image"
               />
               <div className="item-details">
                 <h4 className="item-name">

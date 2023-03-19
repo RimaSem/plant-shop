@@ -38,11 +38,14 @@ function Item({ plantData }: plantDataProps) {
         )}
       </div>
 
-      <Link to={`/plant-shop/shop/${plantData.id}`}>
-        <img src={plantData.img} />
+      <Link to={`/plant-shop/shop/${plantData.id}`} aria-label="Plant details">
+        <img src={plantData.img} alt="Plant image" />
       </Link>
       <div className="item-info">
-        <Link to={`/plant-shop/shop/${plantData.id}`}>
+        <Link
+          to={`/plant-shop/shop/${plantData.id}`}
+          aria-label="Plant details"
+        >
           <div className="item-name">{plantData.name}</div>
         </Link>
         <div className="item-price">€{plantData.price}.00</div>

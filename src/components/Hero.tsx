@@ -12,7 +12,7 @@ function Hero() {
         Get healthy houseplants, succulents and air plants shipped directly from
         our plant shop to your door.
       </p>
-      <Link to="./shop">
+      <Link to="./shop" aria-label="Shop button">
         <button type="button">FIND YOUR PLANT</button>
       </Link>
     </div>
