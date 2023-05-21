@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import data from "./data";
 
-type appContextProviderProps = {
+interface appContextProviderProps {
   children: React.ReactNode;
-};
+}
 
-type allItemsType = {
+interface allItemsType {
   id: number;
   name: string;
   price: number;
@@ -14,26 +14,26 @@ type allItemsType = {
   isFavorite: boolean;
   forBeginners: boolean;
   isPetSafe: boolean;
-};
+}
 
-type cartType = {
+interface cartType {
   id: number;
   quantity: number;
   price: number;
-};
+}
 
-type AppContextType = {
+interface AppContextType {
   allItems: allItemsType[];
   setAllItems: React.Dispatch<React.SetStateAction<allItemsType[]>>;
   toggleFavorite: (id: number) => void;
   cart: cartType[] | null;
   setCart: React.Dispatch<React.SetStateAction<cartType[] | null>>;
   addToCart: (id: number, quantity: number, price: number) => void;
-};
+}
 
 const AppContext = React.createContext<AppContextType | null>(null);
 
-function AppContextProvider({ children }: appContextProviderProps) {
+const AppContextProvider = ({ children }: appContextProviderProps) => {
   const [allItems, setAllItems] = useState(
     localStorage.getItem("items") ? JSON.parse(localStorage["items"]) : data
   );
@@ -41,14 +41,14 @@ function AppContextProvider({ children }: appContextProviderProps) {
     localStorage.getItem("cart") ? JSON.parse(localStorage["cart"]) : null
   );
 
-  function addToCart(id: number, quantity: number, price: number) {
+  const addToCart = (id: number, quantity: number, price: number) => {
     let copyCart: cartType[] = [];
     cart?.forEach((item) => copyCart.push(item));
     copyCart.push({ id, quantity, price });
     setCart(copyCart);
-  }
+  };
 
-  function toggleFavorite(id: number) {
+  const toggleFavorite = (id: number) => {
     const updatedArr = allItems.map((item: allItemsType) => {
       if (item.id === id) {
         return { ...item, isFavorite: !item.isFavorite };
@@ -56,11 +56,12 @@ function AppContextProvider({ children }: appContextProviderProps) {
       return item;
     });
     setAllItems(updatedArr);
-  }
+  };
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(allItems));
   }, [allItems]);
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -79,6 +80,6 @@ function AppContextProvider({ children }: appContextProviderProps) {
       {children}
     </AppContext.Provider>
   );
-}
+};
 
 export { AppContextProvider, AppContext };
