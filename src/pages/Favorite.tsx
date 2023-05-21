@@ -1,9 +1,9 @@
-import "./scss/Favorite.scss";
+import styled from "styled-components";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../appContext";
 import Item from "../components/Item";
 
-function Favorite() {
+const Favorite: React.FC = () => {
   const context = useContext(AppContext);
 
   useEffect(() => {
@@ -15,15 +15,40 @@ function Favorite() {
     .map((item) => <Item key={item.id} plantData={item} />);
 
   return (
-    <div className="favorite-container">
+    <FavoritesContainer>
       {displayItems?.length ? (
-        <h3>Your Favorite Plants</h3>
+        <StyledHeading>Your Favorite Plants</StyledHeading>
       ) : (
-        <h3>No favorite plants &#128533;</h3>
+        <StyledHeading>No favorite plants &#128533;</StyledHeading>
       )}
-      <div className="favorite-list">{displayItems}</div>
-    </div>
+      <FavoritesList>{displayItems}</FavoritesList>
+    </FavoritesContainer>
   );
-}
+};
 
 export default Favorite;
+
+const FavoritesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em auto 4em auto;
+  max-width: ${({ theme }) => theme.sizes.containerL};
+`;
+
+const StyledHeading = styled.h3`
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primaryGreen};
+  text-align: center;
+`;
+
+const FavoritesList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  margin-top: 2em;
+`;
