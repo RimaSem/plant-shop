@@ -23,7 +23,7 @@ const PetFriendlySection: React.FC = () => (
         and dog-safe houseplants.
       </StyledParagraph>
       <Link
-        to={`./${RouteNames.SHOP}/?isPetSafe=true`}
+        to={`./${RouteNames.SHOP + "/" + RouteNames.PET_SAFE_QUERY}`}
         aria-label="Shop for pet-safe plants"
       >
         <Button>Shop the collection</Button>

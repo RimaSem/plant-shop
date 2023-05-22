@@ -3,6 +3,8 @@ import { ThemeProps } from "./themeInterface";
 export const theme: ThemeProps = {
   colors: {
     white: "#FFFFFF",
+    black: "#000000",
+    grey: "#808080",
     accentDark: "#313232",
     primaryGreen: "#5da271",
     secondaryGreen: "#437d53",
@@ -15,7 +17,8 @@ export const theme: ThemeProps = {
 };
 
 export const devices = {
-  // mobileL: "(max-width: 425px)",
+  mobileS: "(max-width: 300px)",
+  mobileM: "(max-width: 400px)",
   // mobileXL: "(max-width: 500px)",
   // mobileXXL: "(max-width: 520px)",
   // tabletXXS: "(max-width: 580px)",

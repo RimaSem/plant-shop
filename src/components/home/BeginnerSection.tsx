@@ -16,7 +16,7 @@ const BeginnerSection: React.FC = () => (
         forgive you for the odd missed watering.
       </StyledParagraph>
       <Link
-        to={`./${RouteNames.SHOP}/?forBeginners=true`}
+        to={`./${RouteNames.SHOP + "/" + RouteNames.FOR_BEGINNERS_QUERY}`}
         aria-label="Shop for beginner plants"
       >
         <Button>Shop the collection</Button>
