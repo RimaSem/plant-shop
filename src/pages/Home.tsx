@@ -13,8 +13,14 @@ const Home: React.FC = () => {
     window.scrollTo({ top: 0, left: 0 });
   }, []);
 
-  const shopIntroArray = homeData.map((obj) => (
-    <Intro image={obj.image} alt={obj.alt} title={obj.title} text={obj.text} />
+  const shopIntroArray = homeData.map((obj, index) => (
+    <Intro
+      key={index}
+      image={obj.image}
+      alt={obj.alt}
+      title={obj.title}
+      text={obj.text}
+    />
   ));
 
   return (

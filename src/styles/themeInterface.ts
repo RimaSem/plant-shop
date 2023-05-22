@@ -5,7 +5,9 @@ export interface ThemeProps {
     grey: string;
     accentDark: string;
     primaryGreen: string;
+    lightGreen: string;
     secondaryGreen: string;
+    lightOrange: string;
     textLight: string;
   };
 

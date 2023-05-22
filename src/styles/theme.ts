@@ -8,6 +8,8 @@ export const theme: ThemeProps = {
     accentDark: "#313232",
     primaryGreen: "#5da271",
     secondaryGreen: "#437d53",
+    lightGreen: "#a1f0b7",
+    lightOrange: "#f8e1a0",
     textLight: "#e3e3e3",
   },
 
@@ -24,5 +26,5 @@ export const devices = {
   // tabletXXS: "(max-width: 580px)",
   tabletXS: "(min-width: 700px)",
   tabletS: "(min-width: 780px)",
-  // tabletM: "(max-width: 865px)",
+  tabletM: "(min-width: 800px)",
 };
