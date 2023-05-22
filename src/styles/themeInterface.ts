@@ -4,6 +4,7 @@ export interface ThemeProps {
     accentDark: string;
     primaryGreen: string;
     secondaryGreen: string;
+    textLight: string;
   };
 
   sizes: {
