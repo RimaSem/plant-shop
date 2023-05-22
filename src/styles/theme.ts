@@ -18,6 +18,7 @@ export const theme: ThemeProps = {
 
   sizes: {
     containerL: "1200px",
+    containerXL: "1400px",
   },
 };
 

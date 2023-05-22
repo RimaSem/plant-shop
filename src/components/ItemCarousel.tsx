@@ -3,15 +3,15 @@ import Carousel from "react-multi-carousel";
 import { useContext } from "react";
 import { AppContext } from "../appContext";
 import Item from "../components/Item";
-import "./scss/ItemCarousel.scss";
+import styled from "styled-components";
 
-function ItemCarousel() {
+const ItemCarousel: React.FC = () => {
   const context = useContext(AppContext);
 
   const displayItems = context?.allItems.slice(0, 10).map((item) => (
-    <div key={item.id} className="card">
+    <Card key={item.id}>
       <Item plantData={item} />
-    </div>
+    </Card>
   ));
 
   const responsive = {
@@ -32,10 +32,23 @@ function ItemCarousel() {
     },
   };
   return (
-    <Carousel className="item-carousel" responsive={responsive} infinite={true}>
+    <StyledCarousel responsive={responsive} infinite={true}>
       {displayItems}
-    </Carousel>
+    </StyledCarousel>
   );
-}
+};
 
 export default ItemCarousel;
+
+const Card = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  min-width: fit-content;
+  overflow: hidden;
+`;
+
+const StyledCarousel = styled(Carousel)`
+  margin: 2em auto;
+  max-width: ${({ theme }) => theme.sizes.containerXL};
+`;

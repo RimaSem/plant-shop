@@ -16,5 +16,6 @@ export interface ThemeProps {
 
   sizes: {
     containerL: string;
+    containerXL: string;
   };
 }
