@@ -13,6 +13,7 @@ export const theme: ThemeProps = {
     lightGreen: "#a1f0b7",
     lightOrange: "#f8e1a0",
     textLight: "#e3e3e3",
+    textGrey: "#898989",
   },
 
   sizes: {

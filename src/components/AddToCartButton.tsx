@@ -79,6 +79,7 @@ const StyledContainer = styled.div`
   display: flex;
   margin-top: 1em;
   width: 100%;
+  max-width: 400px;
 `;
 
 const QuantityWrapper = styled.div`
@@ -87,31 +88,33 @@ const QuantityWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   border: 1px solid ${({ theme }) => theme.colors.accentDark};
-  min-height: 2.5em;
+  min-height: 2.4em;
   background-color: ${({ theme }) => theme.colors.white};
-  font-size: 0.9rem;
+  font-size: 1rem;
 `;
 
 const QuantityButton = styled.button`
   border: none;
   background-color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
+  font-size: 1rem;
 `;
 
 const QuantityValue = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1rem;
 `;
 
 const AddToCardButton = styled.button`
   flex: 3;
   transition: all 0.2s;
   border: none;
-  padding: 0.3em 0;
+  padding: 0.2em 0;
   background-color: ${({ theme }) => theme.colors.accentDark};
-  font-size: 1rem;
   font-family: inherit;
+  font-size: 1rem;
   color: ${({ theme }) => theme.colors.white};
   font-weight: 500;
 

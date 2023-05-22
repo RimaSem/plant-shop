@@ -11,6 +11,7 @@ export interface ThemeProps {
     secondaryGreen: string;
     lightOrange: string;
     textLight: string;
+    textGrey: string;
   };
 
   sizes: {
