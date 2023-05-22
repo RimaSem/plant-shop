@@ -8,15 +8,15 @@ import {
   IntroContainer,
   StyledImage,
   IntroWrapper,
-  StyledHeading,
   StyledParagraph,
 } from "./BeginnerSection";
+import { SectionHeading } from "../../pages/Home";
 
 const PetFriendlySection: React.FC = () => (
   <PetFriendlyIntroContainer>
     <PetFriendlyStyledImage src={Img5} alt="Pet-safe houseplants" />
     <PetFriendlyIntroWrapper>
-      <StyledHeading>Pet-safe houseplants</StyledHeading>
+      <SectionHeading>Pet-safe houseplants</SectionHeading>
       <StyledParagraph>
         It is possible for pets and plants to coexist in the same home. Keep
         your four-legged friends happy, healthy and out of harm’s way with cat

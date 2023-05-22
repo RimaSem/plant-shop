@@ -4,12 +4,13 @@ import Img4 from "../../img/beginner-plants.jpg";
 import Button from "./Button";
 import { RouteNames } from "../../types/RouteNames";
 import { devices } from "../../styles/theme";
+import { SectionHeading } from "../../pages/Home";
 
 const BeginnerSection: React.FC = () => (
   <IntroContainer>
     <StyledImage src={Img4} alt="Almost unkillable houseplants" />
     <IntroWrapper>
-      <StyledHeading>(Almost) unkillable houseplants</StyledHeading>
+      <SectionHeading>(Almost) unkillable houseplants</SectionHeading>
       <StyledParagraph>
         We know what it’s like to be guilty of plant murder, we've pulled
         together a collection of plants who are low maintenance enough to
@@ -61,8 +62,6 @@ export const IntroWrapper = styled.div`
     text-align: end;
   }
 `;
-
-export const StyledHeading = styled.h2``;
 
 export const StyledParagraph = styled.p`
   margin: 0 0 1em 0;

@@ -42,7 +42,7 @@ export default Home;
 
 const HomeContainer = styled.div``;
 
-const SectionHeading = styled.h2`
+export const SectionHeading = styled.h2`
   margin-top: 2em;
   font-size: 2.3rem;
   color: ${({ theme }) => theme.colors.primaryGreen};
