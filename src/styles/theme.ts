@@ -2,12 +2,14 @@ import { ThemeProps } from "./themeInterface";
 
 export const theme: ThemeProps = {
   colors: {
-    white: "#FFFFFF",
+    white: "#ffffff",
     black: "#000000",
     grey: "#808080",
+    accentGrey: "#7c7c7c",
     accentDark: "#313232",
     primaryGreen: "#5da271",
     secondaryGreen: "#437d53",
+    accentGreen: "#437652",
     lightGreen: "#a1f0b7",
     lightOrange: "#f8e1a0",
     textLight: "#e3e3e3",

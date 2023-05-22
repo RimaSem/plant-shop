@@ -1,4 +1,3 @@
-import "./scss/ItemDetail.scss";
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../appContext";

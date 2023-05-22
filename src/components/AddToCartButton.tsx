@@ -1,18 +1,18 @@
-import "./scss/AddToCartButton.scss";
 import { useState, useContext, useRef } from "react";
 import { AppContext } from "../appContext";
+import styled from "styled-components";
 
-type AddToCartButtonProps = {
+interface AddToCartButtonProps {
   id: string | number | undefined;
-};
+}
 
-function AddToCartButton({ id }: AddToCartButtonProps) {
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({ id }) => {
   const context = useContext(AppContext);
   const [quantity, setQuantity] = useState(1);
   const minusRef = useRef<HTMLButtonElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  function minus() {
+  const minus = () => {
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
       let copyCart: { id: number; quantity: number; price: number }[] = [];
@@ -23,9 +23,9 @@ function AddToCartButton({ id }: AddToCartButtonProps) {
         )
       );
     }
-  }
+  };
 
-  function plus() {
+  const plus = () => {
     setQuantity((prev) => prev + 1);
     let copyCart: { id: number; quantity: number; price: number }[] = [];
     context?.cart?.forEach((item) => copyCart.push(item));
@@ -34,32 +34,28 @@ function AddToCartButton({ id }: AddToCartButtonProps) {
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
-  }
+  };
 
   return (
-    <div className="add-to-cart-wrapper">
-      <div className="quantity-wrapper">
-        <button
+    <StyledContainer>
+      <QuantityWrapper>
+        <QuantityButton
           ref={minusRef}
           onClick={minus}
-          className="quantity-button minus"
           disabled={context?.cart?.some((obj) => obj.id === id)}
         >
           −
-        </button>
-        <div className="quantity-value">{quantity}</div>
-        <button
+        </QuantityButton>
+        <QuantityValue>{quantity}</QuantityValue>
+        <QuantityButton
           onClick={plus}
-          className="quantity-button"
           disabled={context?.cart?.some((obj) => obj.id === id)}
         >
           +
-        </button>
-      </div>
-      <button
+        </QuantityButton>
+      </QuantityWrapper>
+      <AddToCardButton
         ref={buttonRef}
-        className="add-to-cart-btn"
-        type="button"
         onClick={() =>
           context?.addToCart(
             Number(id),
@@ -72,9 +68,60 @@ function AddToCartButton({ id }: AddToCartButtonProps) {
         {context?.cart?.some((obj) => obj.id === id)
           ? "Item Added"
           : "Add to Cart"}
-      </button>
-    </div>
+      </AddToCardButton>
+    </StyledContainer>
   );
-}
+};
 
 export default AddToCartButton;
+
+const StyledContainer = styled.div`
+  display: flex;
+  margin-top: 1em;
+  width: 100%;
+`;
+
+const QuantityWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid ${({ theme }) => theme.colors.accentDark};
+  min-height: 2.5em;
+  background-color: ${({ theme }) => theme.colors.white};
+  font-size: 0.9rem;
+`;
+
+const QuantityButton = styled.button`
+  border: none;
+  background-color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
+`;
+
+const QuantityValue = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const AddToCardButton = styled.button`
+  flex: 3;
+  transition: all 0.2s;
+  border: none;
+  padding: 0.3em 0;
+  background-color: ${({ theme }) => theme.colors.accentDark};
+  font-size: 1rem;
+  font-family: inherit;
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 500;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.accentGreen};
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.accentGrey};
+    cursor: default;
+  }
+`;
