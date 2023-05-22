@@ -2,6 +2,7 @@ export interface ThemeProps {
   colors: {
     white: string;
     black: string;
+    transparentBlack: string;
     grey: string;
     accentGrey: string;
     accentDark: string;

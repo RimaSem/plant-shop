@@ -1,7 +1,9 @@
 @import "../../variables";
 
 .item-card {
-  width: 90%;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 160px;
   // width: clamp(160px, 20%, 40%);
   border: 0.0625rem solid #dedede;
   display: flex;

@@ -26,7 +26,9 @@ const Shop: React.FC = () => {
   };
 
   const displayItems = filterItems()?.map((item) => (
-    <Item key={item.id} plantData={item} />
+    <Wrapper key={item.id}>
+      <Item plantData={item} />
+    </Wrapper>
   ));
 
   return (
@@ -74,7 +76,7 @@ const ButtonWrapper = styled.div`
   gap: 1em;
   margin-bottom: 2em;
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobileM} {
     flex-direction: column;
     gap: 0.3em;
   }
@@ -89,6 +91,7 @@ const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.grey};
   font-weight: 300;
   text-decoration: none;
+  text-align: center;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.secondaryGreen};
@@ -101,6 +104,14 @@ const SelectedLink = styled(StyledLink)`
   border: 1px solid ${({ theme }) => theme.colors.secondaryGreen};
   background-color: ${({ theme }) => theme.colors.secondaryGreen};
   color: ${({ theme }) => theme.colors.white};
+`;
+
+const Wrapper = styled.div`
+  width: clamp(160px, 20%, 40%);
+
+  @media ${devices.mobileS} {
+    width: 90%;
+  }
 `;
 
 const ItemWrapper = styled.div`

@@ -2,7 +2,7 @@ import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import { useContext } from "react";
 import { AppContext } from "../appContext";
-import Item from "../components/Item";
+import Item from "./Item";
 import styled from "styled-components";
 
 const ItemCarousel: React.FC = () => {
@@ -26,8 +26,13 @@ const ItemCarousel: React.FC = () => {
       slidesToSlide: 2,
     },
     mobile: {
-      breakpoint: { max: 500, min: 0 },
+      breakpoint: { max: 550, min: 0 },
       items: 2,
+      centerMode: true,
+    },
+    mobileS: {
+      breakpoint: { max: 360, min: 0 },
+      items: 1,
       centerMode: true,
     },
   };
@@ -44,6 +49,7 @@ const Card = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
+  padding: 1em;
   min-width: fit-content;
   overflow: hidden;
 `;

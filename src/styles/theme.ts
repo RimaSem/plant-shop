@@ -4,6 +4,7 @@ export const theme: ThemeProps = {
   colors: {
     white: "#ffffff",
     black: "#000000",
+    transparentBlack: "rgba(0, 0, 0, 0.5)",
     grey: "#808080",
     accentGrey: "#7c7c7c",
     accentDark: "#313232",
@@ -23,7 +24,8 @@ export const theme: ThemeProps = {
 };
 
 export const devices = {
-  mobileS: "(max-width: 300px)",
+  mobileXS: "(max-width: 300px)",
+  mobileS: "(max-width: 350px)",
   mobileM: "(max-width: 400px)",
   // mobileXL: "(max-width: 500px)",
   // mobileXXL: "(max-width: 520px)",
