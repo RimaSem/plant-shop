@@ -13,13 +13,13 @@ interface CartProps {
 
 const Cart: React.FC<CartProps> = ({ overlayHidden, hideOverlay }) => {
   const context = useContext(AppContext);
-  const closeRef = useRef<HTMLDivElement>(null);
+  // const closeRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (overlayHidden && closeRef.current) {
-      closeRef.current.style.right = "0";
-    }
-  }, [overlayHidden]);
+  // useEffect(() => {
+  //   if (overlayHidden && closeRef.current) {
+  //     closeRef.current.style.right = "0";
+  //   }
+  // }, [overlayHidden]);
 
   const calculateTotalPrice = () => {
     const total = context?.cart?.reduce((prev, current) => {
@@ -29,7 +29,7 @@ const Cart: React.FC<CartProps> = ({ overlayHidden, hideOverlay }) => {
   };
 
   return (
-    <CartContainer ref={closeRef}>
+    <CartContainer overlayHidden={overlayHidden}>
       <CloseCartButton onClick={hideOverlay}>
         <Icon path={mdiWindowClose} />
       </CloseCartButton>
@@ -54,13 +54,17 @@ const Cart: React.FC<CartProps> = ({ overlayHidden, hideOverlay }) => {
 
 export default Cart;
 
-const CartContainer = styled.div`
+interface CartContainerProps {
+  overlayHidden: boolean;
+}
+
+const CartContainer = styled.div<CartContainerProps>`
   z-index: 1003;
   position: fixed;
-  right: -600px;
-  transition: right 0.5s;
+  right: ${(overlayHidden) => (overlayHidden ? "0" : "-600px")};
   display: flex;
   flex-direction: column;
+  transition: right 0.5s;
   height: 100vh;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.offWhite};
