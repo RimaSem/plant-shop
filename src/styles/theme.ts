@@ -6,6 +6,7 @@ export const theme: ThemeProps = {
     offWhite: "#f0f0f0",
     black: "#000000",
     transparentBlack: "rgba(0, 0, 0, 0.5)",
+    red: "#ff0000",
     grey: "#808080",
     darkGrey: "#4b4b4b",
     accentGrey: "#7c7c7c",

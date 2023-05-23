@@ -4,6 +4,7 @@ export interface ThemeProps {
     offWhite: string;
     black: string;
     transparentBlack: string;
+    red: string;
     grey: string;
     darkGrey: string;
     accentGrey: string;
