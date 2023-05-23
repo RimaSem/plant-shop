@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { devices } from "../styles/theme";
-import { RouteNames } from "../types/RouteNames";
+import { devices } from "../../styles/theme";
+import { RouteNames } from "../../types/RouteNames";
 
 const Hero: React.FC = () => (
   <HeroContainer>

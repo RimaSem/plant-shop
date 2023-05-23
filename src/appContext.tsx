@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import data from "./data";
+import data from "./data/plantData";
 
 interface appContextProviderProps {
   children: React.ReactNode;

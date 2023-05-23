@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Hero from "../components/Hero";
-import ItemCarousel from "../components/ItemCarousel";
+import Hero from "../components/home/Hero";
+import ItemCarousel from "../components/home/ItemCarousel";
 import Intro from "../components/home/Intro";
 import BeginnerSection from "../components/home/BeginnerSection";
 import PetFriendlySection from "../components/home/PetFriendlySection";

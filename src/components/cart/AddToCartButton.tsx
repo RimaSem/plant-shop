@@ -1,5 +1,5 @@
 import { useState, useContext, useRef } from "react";
-import { AppContext } from "../appContext";
+import { AppContext } from "../../appContext";
 import styled from "styled-components";
 
 interface AddToCartButtonProps {

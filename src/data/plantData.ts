@@ -26,7 +26,10 @@ export default [
     price: 18,
     img: MarbleQueen,
     description:
-      "Marble Queen, or Devil's Ivy, is a tropical, climbing plant with origins in the Solomon Islands. The Marble Queen is a variegated cultivar of Epipremnum aureum. Its waxy green leaves have streaks and patches of white, creating a bright and striking foliage plant. Marble Queens have oval leaves with heart shaped bases.",
+      "Marble Queen, or Devil's Ivy, is a tropical, climbing plant with origins\
+       in the Solomon Islands. The Marble Queen is a variegated cultivar of Epipremnum aureum. \
+       Its waxy green leaves have streaks and patches of white, creating a bright and striking \
+       foliage plant. Marble Queens have oval leaves with heart shaped bases.",
     isFavorite: false,
     forBeginners: true,
     isPetSafe: false,

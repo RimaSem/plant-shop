@@ -1,32 +1,30 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
+import Header from "./header/Header";
 import Footer from "./Footer";
-import Cart from "./Cart";
+import Cart from "./cart/Cart";
 import styled from "styled-components";
 
 const Layout: React.FC = () => {
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const [overlayHidden, setOverlayHidden] = useState(false);
+  const [overlayHidden, setOverlayHidden] = useState(true);
 
   const hideOverlay = () => {
-    if (overlayRef.current) {
-      setOverlayHidden(true);
-      overlayRef.current.style.visibility = "hidden";
-      document.body.style.overflowY = "visible";
-    }
+    setOverlayHidden(true);
+    document.body.style.overflowY = "visible";
   };
 
   return (
     <>
       <StyledOverlay
-        ref={overlayRef}
-        className="overlay"
         onClick={hideOverlay}
+        overlayHidden={overlayHidden}
       ></StyledOverlay>
       <SiteWrapper>
         <Cart overlayHidden={overlayHidden} hideOverlay={hideOverlay} />
-        <Header />
+        <Header
+          overlayHidden={overlayHidden}
+          setOverlayHidden={setOverlayHidden}
+        />
         <StyledMain>
           <Outlet />
         </StyledMain>
@@ -38,7 +36,11 @@ const Layout: React.FC = () => {
 
 export default Layout;
 
-const StyledOverlay = styled.div`
+interface StyledOverlayProps {
+  overlayHidden: boolean;
+}
+
+const StyledOverlay = styled.div<StyledOverlayProps>`
   z-index: 1002;
   position: fixed;
   top: 0;
@@ -46,7 +48,7 @@ const StyledOverlay = styled.div`
   bottom: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.transparentBlack};
-  visibility: hidden;
+  visibility: ${(overlayHidden) => (overlayHidden ? "hidden" : "visible")};
 `;
 
 const SiteWrapper = styled.div`

@@ -1,8 +1,8 @@
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import { useContext } from "react";
-import { AppContext } from "../appContext";
-import Item from "./Item";
+import { AppContext } from "../../appContext";
+import Item from "../Item";
 import styled from "styled-components";
 
 const ItemCarousel: React.FC = () => {

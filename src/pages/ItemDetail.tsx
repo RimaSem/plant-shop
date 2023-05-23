@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../appContext";
-import AddToCartButton from "../components/AddToCartButton";
+import AddToCartButton from "../components/cart/AddToCartButton";
 import styled from "styled-components";
 import { devices } from "../styles/theme";
 

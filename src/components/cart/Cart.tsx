@@ -1,17 +1,17 @@
 import { useRef, useContext, useEffect } from "react";
-import { AppContext } from "../appContext";
+import { AppContext } from "../../appContext";
 import { Icon } from "@mdi/react";
 import { mdiWindowClose } from "@mdi/js";
 import styled from "styled-components";
-import { devices } from "../styles/theme";
-import CartItem from "./cart/CartItem";
+import { devices } from "../../styles/theme";
+import CartItem from "./CartItem";
 
-interface CartProps {
+interface OverlayProps {
   overlayHidden: boolean;
   hideOverlay: () => void;
 }
 
-const Cart: React.FC<CartProps> = ({ overlayHidden, hideOverlay }) => {
+const Cart: React.FC<OverlayProps> = ({ overlayHidden, hideOverlay }) => {
   const context = useContext(AppContext);
   // const closeRef = useRef<HTMLDivElement>(null);
 
@@ -69,7 +69,7 @@ const CartContainer = styled.div<CartContainerProps>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.offWhite};
 
-  @media ${devices.mobileL} {
+  @media ${devices.mobileXL} {
     width: 520px;
   }
 `;

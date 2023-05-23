@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@mdi/react";
 import { mdiHeartOutline, mdiHeart } from "@mdi/js";
 import { AppContext } from "../appContext";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "./cart/AddToCartButton";
 import styled from "styled-components";
 import { devices } from "../styles/theme";
 import { RouteNames } from "../types/RouteNames";
@@ -38,7 +38,6 @@ const Item: React.FC<plantDataProps> = ({ plantData }) => {
           <StyledIcon path={mdiHeartOutline} size={1} />
         )}
       </HeartIconWrapper>
-
       <StyledLink
         to={`${RouteNames.HOME + RouteNames.SHOP}/${plantData.id}`}
         aria-label="Plant details"
