@@ -1,121 +1,116 @@
-import "./scss/Cart.scss";
-import { useRef, useContext } from "react";
+import { useRef, useContext, useEffect } from "react";
 import { AppContext } from "../appContext";
 import { Icon } from "@mdi/react";
-import { mdiWindowClose, mdiTrashCanOutline } from "@mdi/js";
+import { mdiWindowClose } from "@mdi/js";
+import styled from "styled-components";
+import { devices } from "../styles/theme";
+import CartItem from "./cart/CartItem";
 
-function Cart() {
-  const context = useContext(AppContext);
-  const minusRef = useRef<HTMLButtonElement>(null);
-  const closeRef = useRef<HTMLDivElement>(null);
-
-  function closeCart() {
-    const overlay = document.querySelector(".overlay") as HTMLElement;
-    const body = document.querySelector("body") as HTMLElement;
-    if (closeRef.current) {
-      closeRef.current.classList.remove("active");
-      overlay.style.visibility = "hidden";
-      body.style.overflowY = "visible";
-    }
-  }
-
-  function removeItem(id: number) {
-    let copyCart: { id: number; quantity: number; price: number }[] = [];
-    context?.cart?.forEach((item) => copyCart.push(item));
-    context?.setCart(copyCart.filter((item) => item.id !== id));
-  }
-
-  function minus(id: number, quantity: number) {
-    if (quantity > 1) {
-      let copyCart: { id: number; quantity: number; price: number }[] = [];
-      context?.cart?.forEach((item) => copyCart.push(item));
-      context?.setCart(
-        copyCart.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        )
-      );
-    }
-  }
-
-  function plus(id: number) {
-    let copyCart: { id: number; quantity: number; price: number }[] = [];
-    context?.cart?.forEach((item) => copyCart.push(item));
-    context?.setCart(
-      copyCart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  }
-
-  return (
-    <div ref={closeRef} className="cart-container">
-      <div className="close-cart-btn" onClick={closeCart}>
-        <Icon path={mdiWindowClose} />
-      </div>
-      <div className="cart-content">
-        {!context?.cart?.length ? (
-          <h1>Your cart is empty</h1>
-        ) : (
-          context?.cart?.map((item) => (
-            <div key={item.id} className="item">
-              <div onClick={() => removeItem(item.id)}>
-                <Icon className="delete-item-btn" path={mdiTrashCanOutline} />
-              </div>
-              <img
-                src={
-                  context?.allItems?.filter((obj) => obj.id === item.id)[0].img
-                }
-                alt="Plant image"
-              />
-              <div className="item-details">
-                <h4 className="item-name">
-                  {
-                    context?.allItems?.filter((obj) => obj.id === item.id)[0]
-                      .name
-                  }
-                </h4>
-                <h4>
-                  €
-                  {context?.allItems?.filter((obj) => obj.id === item.id)[0]
-                    .price * item.quantity}
-                  .00
-                </h4>
-                <div className="quantity-wrapper">
-                  <button
-                    ref={minusRef}
-                    onClick={() => minus(item.id, item.quantity)}
-                    className="quantity-button minus"
-                  >
-                    −
-                  </button>
-                  <div className="quantity-value">{item.quantity}</div>
-                  <button
-                    onClick={() => plus(item.id)}
-                    className="quantity-button"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))
-        )}
-
-        {Number(context?.cart?.length) > 0 && (
-          <div className="checkout-wrapper">
-            <h3>
-              Total: €
-              {context?.cart?.reduce((prev, current) => {
-                return prev + current.quantity * current.price;
-              }, 0)}
-              .00
-            </h3>
-            <button type="button">Checkout</button>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+interface CartProps {
+  overlayHidden: boolean;
+  hideOverlay: () => void;
 }
 
+const Cart: React.FC<CartProps> = ({ overlayHidden, hideOverlay }) => {
+  const context = useContext(AppContext);
+  const closeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (overlayHidden && closeRef.current) {
+      closeRef.current.style.right = "0";
+    }
+  }, [overlayHidden]);
+
+  const calculateTotalPrice = () => {
+    const total = context?.cart?.reduce((prev, current) => {
+      return prev + current.quantity * current.price;
+    }, 0);
+    return `Total: €${total}.00`;
+  };
+
+  return (
+    <CartContainer ref={closeRef}>
+      <CloseCartButton onClick={hideOverlay}>
+        <Icon path={mdiWindowClose} />
+      </CloseCartButton>
+      <CartContent>
+        {!context?.cart?.length ? (
+          <CartHeading>Your cart is empty</CartHeading>
+        ) : (
+          context?.cart?.map((item) => (
+            <CartItem key={item.id} cartItem={item} />
+          ))
+        )}
+        {Number(context?.cart?.length) > 0 && (
+          <CheckoutWrapper>
+            <PriceHeading>{calculateTotalPrice()}</PriceHeading>
+            <StyledButton>Checkout</StyledButton>
+          </CheckoutWrapper>
+        )}
+      </CartContent>
+    </CartContainer>
+  );
+};
+
 export default Cart;
+
+const CartContainer = styled.div`
+  z-index: 1003;
+  position: fixed;
+  right: -600px;
+  transition: right 0.5s;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.offWhite};
+
+  @media ${devices.mobileL} {
+    width: 520px;
+  }
+`;
+
+const CloseCartButton = styled.div`
+  margin: 1em 1em 1em auto;
+  width: 2em;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.hoverRed};
+  }
+`;
+
+const CartContent = styled.div`
+  margin: 0 auto;
+  width: 95%;
+  overflow-y: scroll;
+`;
+
+const CartHeading = styled.h1`
+  text-align: center;
+`;
+
+const CheckoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+  font-size: 1.5rem;
+`;
+
+const PriceHeading = styled.h3``;
+
+const StyledButton = styled.button`
+  border: none;
+  width: 40%;
+  height: 2em;
+  background-color: ${({ theme }) => theme.colors.primaryGreen};
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.1rem;
+  color: ${({ theme }) => theme.colors.textLight};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondaryGreen};
+  }
+`;

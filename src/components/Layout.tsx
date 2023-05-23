@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -7,14 +7,13 @@ import styled from "styled-components";
 
 const Layout: React.FC = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [overlayHidden, setOverlayHidden] = useState(false);
 
   const hideOverlay = () => {
-    const cart = document.querySelector(".cart-container") as HTMLElement;
-    const body = document.querySelector("body") as HTMLElement;
-    if (overlayRef.current && cart && body) {
+    if (overlayRef.current) {
+      setOverlayHidden(true);
       overlayRef.current.style.visibility = "hidden";
-      cart.classList.remove("active");
-      body.style.overflowY = "visible";
+      document.body.style.overflowY = "visible";
     }
   };
 
@@ -26,7 +25,7 @@ const Layout: React.FC = () => {
         onClick={hideOverlay}
       ></StyledOverlay>
       <SiteWrapper>
-        <Cart />
+        <Cart overlayHidden={overlayHidden} hideOverlay={hideOverlay} />
         <Header />
         <StyledMain>
           <Outlet />

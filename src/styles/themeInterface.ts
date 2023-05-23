@@ -1,9 +1,11 @@
 export interface ThemeProps {
   colors: {
     white: string;
+    offWhite: string;
     black: string;
     transparentBlack: string;
     grey: string;
+    darkGrey: string;
     accentGrey: string;
     accentDark: string;
     primaryGreen: string;
@@ -13,6 +15,7 @@ export interface ThemeProps {
     lightOrange: string;
     textLight: string;
     textGrey: string;
+    hoverRed: string;
   };
 
   sizes: {
