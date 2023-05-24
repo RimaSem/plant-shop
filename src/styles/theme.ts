@@ -19,6 +19,7 @@ export const theme: ThemeProps = {
     textLight: "#e3e3e3",
     textGrey: "#898989",
     hoverRed: "#a40000",
+    borderColor: "#dedede",
   },
 
   sizes: {

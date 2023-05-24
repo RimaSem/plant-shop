@@ -5,18 +5,8 @@ import { RouteNames } from "../../types/RouteNames";
 
 const Nav: React.FC = () => (
   <StyledNav>
-    <StyledNavLink
-      to={RouteNames.HOME}
-      className={({ isActive }) => (isActive ? "active-link" : "")}
-    >
-      Home
-    </StyledNavLink>
-    <StyledNavLink
-      to={RouteNames.HOME + RouteNames.SHOP}
-      className={({ isActive }) => (isActive ? "active-link" : "")}
-    >
-      Shop
-    </StyledNavLink>
+    <StyledNavLink to={RouteNames.HOME}>Home</StyledNavLink>
+    <StyledNavLink to={RouteNames.HOME + RouteNames.SHOP}>Shop</StyledNavLink>
   </StyledNav>
 );
 
@@ -42,6 +32,10 @@ const StyledNavLink = styled(NavLink)`
   color: ${({ theme }) => theme.colors.grey};
   text-decoration: none;
 
+  &.active {
+    color: ${({ theme }) => theme.colors.black};
+  }
+
   &:hover {
     color: ${({ theme }) => theme.colors.black};
   }
@@ -62,9 +56,5 @@ const StyledNavLink = styled(NavLink)`
   &:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
-
-  .active-link {
-    color: ${({ theme }) => theme.colors.black};
   }
 `;

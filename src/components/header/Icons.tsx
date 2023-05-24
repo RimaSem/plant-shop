@@ -15,10 +15,9 @@ const Icons: React.FC<HeaderProps> = ({ setCartOpened }) => {
     <IconWrapper>
       <StyledNavLink
         to={RouteNames.HOME + RouteNames.FAVORITE}
-        className={({ isActive }) => (isActive ? "active-link" : "")}
         aria-label="Favorite plants"
       >
-        <StyledIcon path={mdiHeart} />
+        <StyledIcon path={mdiHeart} className="heart-icon" />
       </StyledNavLink>
       <CartIconWrapper
         ref={cartIconRef}
@@ -44,8 +43,10 @@ const IconWrapper = styled.div`
 `;
 
 const StyledNavLink = styled(NavLink)`
-  .active-link {
-    color: ${({ theme }) => theme.colors.black};
+  &.active {
+    .heart-icon {
+      color: ${({ theme }) => theme.colors.black};
+    }
   }
 `;
 
@@ -61,6 +62,7 @@ const StyledIcon = styled(Icon)`
 
 const CartIconWrapper = styled.div`
   position: relative;
+  margin-right: 1em;
 `;
 
 const QuantityLabel = styled.div`

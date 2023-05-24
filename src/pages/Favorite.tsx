@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../appContext";
 import Item from "../components/Item";
-import { devices } from "../styles/theme";
 
 const Favorite: React.FC = () => {
   const context = useContext(AppContext);

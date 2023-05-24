@@ -17,6 +17,7 @@ export interface ThemeProps {
     textLight: string;
     textGrey: string;
     hoverRed: string;
+    borderColor: string;
   };
 
   sizes: {

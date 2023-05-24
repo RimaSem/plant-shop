@@ -64,7 +64,7 @@ const ItemCard = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 0.0625rem solid ${({ theme }) => theme.colors.offWhite};
+  border: 0.0625rem solid ${({ theme }) => theme.colors.borderColor};
   margin: 0 auto;
   width: 100%;
   min-width: 160px;
