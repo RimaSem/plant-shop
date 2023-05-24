@@ -5,15 +5,14 @@ import Logo from "./Logo";
 import Icons from "./Icons";
 
 export interface HeaderProps {
-  overlayHidden: boolean;
-  setOverlayHidden: React.Dispatch<React.SetStateAction<boolean>>;
+  setCartOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header: React.FC<HeaderProps> = ({ overlayHidden, setOverlayHidden }) => (
+const Header: React.FC<HeaderProps> = ({ setCartOpened }) => (
   <StyledHeader>
     <Logo />
     <Nav />
-    <Icons overlayHidden={overlayHidden} setOverlayHidden={setOverlayHidden} />
+    <Icons setCartOpened={setCartOpened} />
   </StyledHeader>
 );
 

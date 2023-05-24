@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { devices } from "../../styles/theme";
 import { RouteNames } from "../../types/RouteNames";
+import BackgroundImg from "../../img/flat-lay-monstera-other-leaves.jpg";
 
 const Hero: React.FC = () => (
   <HeroContainer>
@@ -28,7 +29,7 @@ const HeroContainer = styled.div`
   width: 100%;
   min-height: 600px;
   padding: 2em;
-  background: url(../img/flat-lay-monstera-other-leaves.jpg) no-repeat;
+  background: url("../../img/flat-lay-monstera-other-leaves.jpg") no-repeat;
   background-size: cover;
   background-position: 10%;
   text-align: center;

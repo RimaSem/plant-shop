@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Img4 from "../../img/beginner-plants.jpg";
+import Img4 from "../../img/beginner-plants.webp";
 import Button from "./Button";
 import { RouteNames } from "../../types/RouteNames";
 import { devices } from "../../styles/theme";

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import Footer from "./Footer";
@@ -6,25 +6,28 @@ import Cart from "./cart/Cart";
 import styled from "styled-components";
 
 const Layout: React.FC = () => {
-  const [overlayHidden, setOverlayHidden] = useState(true);
+  const [cartOpened, setCartOpened] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
-  const hideOverlay = () => {
-    setOverlayHidden(true);
-    document.body.style.overflowY = "visible";
-  };
+  useEffect(() => {
+    if (cartOpened && overlayRef.current) {
+      overlayRef.current.style.visibility = "visible";
+      document.body.style.overflowY = "hidden";
+    } else if (overlayRef.current) {
+      overlayRef.current.style.visibility = "hidden";
+      document.body.style.overflowY = "visible";
+    }
+  }, [cartOpened]);
 
   return (
     <>
       <StyledOverlay
-        onClick={hideOverlay}
-        overlayHidden={overlayHidden}
+        onClick={() => setCartOpened((prev) => !prev)}
+        ref={overlayRef}
       ></StyledOverlay>
       <SiteWrapper>
-        <Cart overlayHidden={overlayHidden} hideOverlay={hideOverlay} />
-        <Header
-          overlayHidden={overlayHidden}
-          setOverlayHidden={setOverlayHidden}
-        />
+        <Cart cartOpened={cartOpened} setCartOpened={setCartOpened} />
+        <Header setCartOpened={setCartOpened} />
         <StyledMain>
           <Outlet />
         </StyledMain>
@@ -36,11 +39,7 @@ const Layout: React.FC = () => {
 
 export default Layout;
 
-interface StyledOverlayProps {
-  overlayHidden: boolean;
-}
-
-const StyledOverlay = styled.div<StyledOverlayProps>`
+const StyledOverlay = styled.div`
   z-index: 1002;
   position: fixed;
   top: 0;
@@ -48,7 +47,7 @@ const StyledOverlay = styled.div<StyledOverlayProps>`
   bottom: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.transparentBlack};
-  visibility: ${(overlayHidden) => (overlayHidden ? "hidden" : "visible")};
+  visibility: "hidden";
 `;
 
 const SiteWrapper = styled.div`

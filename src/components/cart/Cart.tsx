@@ -7,19 +7,21 @@ import { devices } from "../../styles/theme";
 import CartItem from "./CartItem";
 
 interface OverlayProps {
-  overlayHidden: boolean;
-  hideOverlay: () => void;
+  cartOpened: boolean;
+  setCartOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Cart: React.FC<OverlayProps> = ({ overlayHidden, hideOverlay }) => {
+const Cart: React.FC<OverlayProps> = ({ cartOpened, setCartOpened }) => {
   const context = useContext(AppContext);
-  // const closeRef = useRef<HTMLDivElement>(null);
+  const cartRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   if (overlayHidden && closeRef.current) {
-  //     closeRef.current.style.right = "0";
-  //   }
-  // }, [overlayHidden]);
+  useEffect(() => {
+    if (cartOpened && cartRef.current) {
+      cartRef.current.style.right = "0";
+    } else if (cartRef.current) {
+      cartRef.current.style.right = "-600px";
+    }
+  }, [cartOpened]);
 
   const calculateTotalPrice = () => {
     const total = context?.cart?.reduce((prev, current) => {
@@ -29,8 +31,8 @@ const Cart: React.FC<OverlayProps> = ({ overlayHidden, hideOverlay }) => {
   };
 
   return (
-    <CartContainer overlayHidden={overlayHidden}>
-      <CloseCartButton onClick={hideOverlay}>
+    <CartContainer ref={cartRef}>
+      <CloseCartButton onClick={() => setCartOpened((prev) => !prev)}>
         <Icon path={mdiWindowClose} />
       </CloseCartButton>
       <CartContent>
@@ -54,14 +56,10 @@ const Cart: React.FC<OverlayProps> = ({ overlayHidden, hideOverlay }) => {
 
 export default Cart;
 
-interface CartContainerProps {
-  overlayHidden: boolean;
-}
-
-const CartContainer = styled.div<CartContainerProps>`
+const CartContainer = styled.div`
   z-index: 1003;
   position: fixed;
-  right: ${(overlayHidden) => (overlayHidden ? "0" : "-600px")};
+  right: "-600px";
   display: flex;
   flex-direction: column;
   transition: right 0.5s;

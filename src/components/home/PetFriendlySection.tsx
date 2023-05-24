@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Img5 from "../../img/pet-friendly-plants.jpg";
+import Img5 from "../../img/pet-friendly-plants.webp";
 import Button from "./Button";
 import { RouteNames } from "../../types/RouteNames";
 import { devices } from "../../styles/theme";

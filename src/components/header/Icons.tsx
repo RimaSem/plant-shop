@@ -3,17 +3,13 @@ import { NavLink } from "react-router-dom";
 import { Icon } from "@mdi/react";
 import { mdiCartOutline, mdiHeart } from "@mdi/js";
 import { RouteNames } from "../../types/RouteNames";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AppContext } from "../../appContext";
 import { HeaderProps } from "./Header";
 
-const Icons: React.FC<HeaderProps> = ({ overlayHidden, setOverlayHidden }) => {
+const Icons: React.FC<HeaderProps> = ({ setCartOpened }) => {
   const context = useContext(AppContext);
-
-  const openCart = () => {
-    setOverlayHidden(false);
-    document.body.style.overflowY = "hidden";
-  };
+  const cartIconRef = useRef<HTMLDivElement>(null);
 
   return (
     <IconWrapper>
@@ -24,9 +20,12 @@ const Icons: React.FC<HeaderProps> = ({ overlayHidden, setOverlayHidden }) => {
       >
         <StyledIcon path={mdiHeart} />
       </StyledNavLink>
-      <CartIconWrapper onClick={openCart}>
+      <CartIconWrapper
+        ref={cartIconRef}
+        onClick={() => setCartOpened((prev) => !prev)}
+      >
         {Number(context?.cart?.length) > 0 && (
-          <QuantityLabel onClick={openCart}>
+          <QuantityLabel onClick={() => setCartOpened((prev) => !prev)}>
             {context?.cart?.length}
           </QuantityLabel>
         )}
