@@ -68,6 +68,7 @@ const ItemCard = styled.div`
   margin: 0 auto;
   width: 100%;
   min-width: 160px;
+  max-width: 250px;
 
   @media ${devices.mobileS} {
     width: 80%;
