@@ -16,7 +16,7 @@ const Favorite: React.FC = () => {
 
   return (
     <FavoritesContainer>
-      {displayItems?.length ? (
+      {displayItems && displayItems.length > 0 ? (
         <StyledHeading>Your Favorite Plants</StyledHeading>
       ) : (
         <StyledHeading>No favorite plants &#128533;</StyledHeading>

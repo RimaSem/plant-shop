@@ -36,7 +36,7 @@ const Cart: React.FC<OverlayProps> = ({ cartOpened, setCartOpened }) => {
         <Icon path={mdiWindowClose} />
       </CloseCartButton>
       <CartContent>
-        {!context?.cart?.length ? (
+        {context?.cart?.length === 0 ? (
           <CartHeading>Your cart is empty</CartHeading>
         ) : (
           context?.cart?.map((item) => (
