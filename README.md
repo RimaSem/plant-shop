@@ -1,14 +1,14 @@
 # Plant Shop
 
-A mock e-commerce site that utilizes React, React Router, and functional components.
+A mock e-commerce site built to further improve my front-end development skills. I also plan to expand this project in the future.
 
 :point_right: [Live Demo](https://rimasem.github.io/plant-shop/)
 
 ## Technologies Used
-- React
+- React + React Router
 - TypeScript
-- SCSS
-- HTML
+- Context API
+- Styled Components
 - ViteJS
 - localStorage
 
