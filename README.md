@@ -1,6 +1,8 @@
 # Plant Shop
 
-A mock e-commerce site built to further improve my front-end development skills. I also plan to expand this project in the future.
+A mock e-commerce site built to further improve my front-end development skills.
+
+<b>WIP note:</b> this project will soon be updated to use MongoDB database and the latest version of Next.js.
 
 :point_right: [Live Demo](https://rimasem.github.io/plant-shop/)
 
