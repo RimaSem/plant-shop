@@ -4,15 +4,7 @@ A mock e-commerce site built to further improve my front-end development skills.
 
 <b>WIP note:</b> this project will soon be updated to use MongoDB database and the latest version of Next.js.
 
-:point_right: [Live Demo](https://rimasem.github.io/plant-shop/) <br> <br>
-<hr>
-
-## Contributors:
-- [Leander Braganza](https://github.com/Leebro10)
-- [Aarol D'Souza](https://github.com/AarDG10)
-- [Ananya Solanki](https://github.com/ananyasolanki1)
-
-<hr>
+:point_right: [Live Demo](https://rimasem.github.io/plant-shop/) 
 
 ## Technologies Used
 - React + React Router
